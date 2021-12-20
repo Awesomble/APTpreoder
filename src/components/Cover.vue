@@ -1,6 +1,4 @@
-<script lang="ts">
-import { onMounted, ref, defineComponent } from 'vue'
-
+<script setup lang="ts">
 </script>
 
 <template>
