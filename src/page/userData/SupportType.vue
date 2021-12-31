@@ -13,6 +13,7 @@ const btnNext = () : void => {
 }
 
 onMounted(() => {
+  console.log(mobiscroll)
   mobiscroll.scroller('#applicantType', {
     display: 'inline',
     onSet(event: { valueText?: string }) {

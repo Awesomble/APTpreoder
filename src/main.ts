@@ -6,7 +6,6 @@ import router from '@/router'
 import store from '@/store'
 import '@/assets/css/style.scss'
 import '@mobiscroll/javascript/dist/css/mobiscroll.min.css'
-import 'swiper/css'
 
 mobiscroll.settings = {
   theme: 'ios',
