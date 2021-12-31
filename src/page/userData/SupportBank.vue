@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
@@ -20,7 +21,7 @@ for (let i = 0; i <= 100000000; i += 100000) {
 }
 
 onMounted(() => {
-  window.mobiscroll.scroller('#applicantBank', {
+  mobiscroll.scroller('#applicantBank', {
     display: 'inline',
     showLabel: true,
     onChange(event: { valueText?: string }) {

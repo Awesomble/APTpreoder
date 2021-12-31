@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import mobiscroll from '@mobiscroll/javascript'
 import {
   computed, onMounted, reactive, ref,
 } from 'vue'
@@ -22,14 +23,14 @@ const btnNext = () : void => {
 }
 
 onMounted(() => {
-  window.mobiscroll.numpad('#ipt1', {
+  mobiscroll.numpad('#ipt1', {
     ...mobiOpt,
     onSet(event: { valueText?: string }) {
       const { valueText } = event
       store.dispatch('setSurportIncome', { key: 'my', value: valueText ? Number(valueText.replace(/\,/g, '')) : 0 })
     },
   })
-  window.mobiscroll.numpad('#ipt2', {
+  mobiscroll.numpad('#ipt2', {
     ...mobiOpt,
     onSet(event: { valueText?: string }) {
       const { valueText } = event

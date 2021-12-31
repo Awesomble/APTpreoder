@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
+
 const store = useStore()
 
 // 이전버튼
@@ -11,7 +13,7 @@ const btnNext = () : void => {
 }
 
 onMounted(() => {
-  window.mobiscroll.scroller('#applicantType', {
+  mobiscroll.scroller('#applicantType', {
     display: 'inline',
     onSet(event: { valueText?: string }) {
       store.dispatch('setSurportType', event.valueText)

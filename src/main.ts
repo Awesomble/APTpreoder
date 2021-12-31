@@ -1,18 +1,14 @@
 import { createApp } from 'vue'
 import { createGtm } from 'vue-gtm'
+import mobiscroll from '@mobiscroll/javascript'
 import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
 import '@/assets/css/style.scss'
+import '@mobiscroll/javascript/dist/css/mobiscroll.min.css'
 import 'swiper/css'
 
-declare global {
-    interface Window {
-        mobiscroll: any
-    }
-}
-
-window.mobiscroll.settings = {
+mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light',
   lang: 'ko',

@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
 
 onMounted(() => {
-  window.mobiscroll.treelist('#applicantArea', {
+  mobiscroll.treelist('#applicantArea', {
     display: 'inline',
     layout: 'liquid',
     placeholder: '주거지역선택',

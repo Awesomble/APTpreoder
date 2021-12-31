@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
@@ -16,8 +17,9 @@ for (let i = 0; i <= 50; i += 1) {
   })
 }
 
+
 onMounted(() => {
-  window.mobiscroll.scroller('#applicantHomeLess', {
+  mobiscroll.scroller('#applicantHomeLess', {
     display: 'inline',
     onChange(event: { valueText?: string }) {
       // store.dispatch('setSurportType', event.valueText)

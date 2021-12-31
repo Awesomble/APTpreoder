@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import mobiscroll from '@mobiscroll/javascript'
 import { computed, onMounted, reactive } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -93,63 +94,63 @@ const mobiOpt2: any = {
   min: new Date(1990, 0, 1),
 }
 onMounted(() => {
-  window.mobiscroll.date('#parents1', {
+  mobiscroll.date('#parents1', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.parent1 = event.valueText
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
-  window.mobiscroll.date('#parents2', {
+  mobiscroll.date('#parents2', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.parent2 = event.valueText
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
-  window.mobiscroll.date('#my', {
+  mobiscroll.date('#my', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.my = event.valueText
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
-  window.mobiscroll.date('#spouse', {
+  mobiscroll.date('#spouse', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.spouse = event.valueText
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
-  window.mobiscroll.date('#children1', {
+  mobiscroll.date('#children1', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.children1 = event.valueText
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
-  window.mobiscroll.date('#children2', {
+  mobiscroll.date('#children2', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.children2 = event.valueText
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
-  window.mobiscroll.date('#children3', {
+  mobiscroll.date('#children3', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.children3 = event.valueText
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
-  window.mobiscroll.date('#children4', {
+  mobiscroll.date('#children4', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.children4 = event.valueText
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
-  window.mobiscroll.date('#children5', {
+  mobiscroll.date('#children5', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
       userFamilyYMD.children5 = event.valueText
