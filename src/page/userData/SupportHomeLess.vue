@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
+import mobiscroll from '@mobiscroll/javascript'
 
 const store = useStore()
 const cntValues : object[] = []

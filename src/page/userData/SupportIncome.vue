@@ -3,6 +3,7 @@ import {
   computed, onMounted, reactive, ref,
 } from 'vue'
 import { useStore } from 'vuex'
+import mobiscroll from '@mobiscroll/javascript'
 
 const store = useStore()
 const myAverage = computed(() : number => store.getters.myAverage)

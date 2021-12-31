@@ -3,6 +3,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
+import mobiscroll from '@mobiscroll/javascript'
 
 export interface UserFamilyYMD {
   parent1: string,

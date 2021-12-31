@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 import dayjs from 'dayjs'
+import mobiscroll from '@mobiscroll/javascript'
 
 const store = useStore()
 
