@@ -1,20 +1,24 @@
 import { createApp } from 'vue'
 import { createGtm } from 'vue-gtm'
-import mobiscroll from '@mobiscroll/javascript'
 import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
 import '@/assets/css/style.scss'
-import '@mobiscroll/javascript/dist/css/mobiscroll.min.css'
 import 'swiper/css'
 
-mobiscroll.settings = {
+declare global {
+    interface Window {
+        mobiscroll: any
+    }
+}
+
+const app = createApp(App)
+// eslint-disable-next-line no-undef
+window.mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light',
   lang: 'ko',
 }
-
-const app = createApp(App)
 
 app.use(
   createGtm({

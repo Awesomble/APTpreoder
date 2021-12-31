@@ -1,20 +1,12 @@
 <script setup lang="ts">
-import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
-import dayjs from "dayjs";
+import dayjs from 'dayjs'
 
 const store = useStore()
 
-// 이전버튼
-const btnPrev = () : void => {
-}
-// 다음버튼
-const btnNext = () : void => {
-}
-
 onMounted(() => {
-  mobiscroll.date('#applicantYYYY', {
+  window.mobiscroll.date('#applicantYYYY', {
     display: 'inline',
     dateFormat: 'yyyy-mm-dd',
     defaultValue: dayjs().subtract(1, 'year').toDate(),

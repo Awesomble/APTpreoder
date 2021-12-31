@@ -1,19 +1,11 @@
 <script setup lang="ts">
-import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
 
-// 이전버튼
-const btnPrev = () : void => {
-}
-// 다음버튼
-const btnNext = () : void => {
-}
-
 onMounted(() => {
-  mobiscroll.treelist('#applicantArea', {
+  window.mobiscroll.treelist('#applicantArea', {
     display: 'inline',
     layout: 'liquid',
     placeholder: '주거지역선택',

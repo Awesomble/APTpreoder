@@ -1,18 +1,10 @@
 <script setup lang="ts">
-import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
 const cntValues: any[] = []
 const amountValues: any[] = []
-
-// 이전버튼
-const btnPrev = () : void => {
-}
-// 다음버튼
-const btnNext = () : void => {
-}
 
 for (let i = 0; i <= 100; i += 1) {
   cntValues.push({
@@ -28,7 +20,7 @@ for (let i = 0; i <= 100000000; i += 100000) {
 }
 
 onMounted(() => {
-  mobiscroll.scroller('#applicantBank', {
+  window.mobiscroll.scroller('#applicantBank', {
     display: 'inline',
     showLabel: true,
     onChange(event: { valueText?: string }) {
