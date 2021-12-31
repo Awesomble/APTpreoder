@@ -12,7 +12,6 @@ declare global {
     }
 }
 
-window.mobiscroll = mobiscroll
 window.mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light',

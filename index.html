@@ -39,7 +39,12 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/js/mobiscroll.javascript.min.js"></script>
+    <script src="/js/mobiscroll.javascript.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event){
+            window.mobiscroll = mobiscroll
+        });
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
