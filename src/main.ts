@@ -12,13 +12,14 @@ declare global {
     }
 }
 
-const app = createApp(App)
-// eslint-disable-next-line no-undef
+window.mobiscroll = mobiscroll
 window.mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light',
   lang: 'ko',
 }
+
+const app = createApp(App)
 
 app.use(
   createGtm({
