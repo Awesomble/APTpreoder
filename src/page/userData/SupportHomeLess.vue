@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
@@ -17,8 +16,9 @@ for (let i = 0; i <= 50; i += 1) {
   })
 }
 
-
 onMounted(() => {
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.scroller('#applicantHomeLess', {
     display: 'inline',
     onChange(event: { valueText?: string }) {

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
@@ -13,7 +12,8 @@ const btnNext = () : void => {
 }
 
 onMounted(() => {
-  console.log(mobiscroll)
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.scroller('#applicantType', {
     display: 'inline',
     onSet(event: { valueText?: string }) {

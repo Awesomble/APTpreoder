@@ -1,18 +1,17 @@
 import { createApp } from 'vue'
 import { createGtm } from 'vue-gtm'
-import mobiscroll from '@mobiscroll/javascript'
 import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
 import '@/assets/css/style.scss'
-import '@mobiscroll/javascript/dist/css/mobiscroll.min.css'
 
+// @ts-ignore
+// eslint-disable-next-line no-undef
 mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light',
   lang: 'ko',
 }
-
 
 const app = createApp(App)
 

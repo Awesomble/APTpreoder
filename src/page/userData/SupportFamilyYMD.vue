@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import mobiscroll from '@mobiscroll/javascript'
 import { computed, onMounted, reactive } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -94,6 +93,8 @@ const mobiOpt2: any = {
   min: new Date(1990, 0, 1),
 }
 onMounted(() => {
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#parents1', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
@@ -101,6 +102,8 @@ onMounted(() => {
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#parents2', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
@@ -108,6 +111,8 @@ onMounted(() => {
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#my', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
@@ -115,6 +120,8 @@ onMounted(() => {
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#spouse', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
@@ -122,6 +129,8 @@ onMounted(() => {
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#children1', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
@@ -129,6 +138,8 @@ onMounted(() => {
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#children2', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
@@ -136,6 +147,8 @@ onMounted(() => {
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#children3', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
@@ -143,6 +156,8 @@ onMounted(() => {
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#children4', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
@@ -150,6 +165,8 @@ onMounted(() => {
       store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#children5', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {

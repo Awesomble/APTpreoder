@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import mobiscroll from '@mobiscroll/javascript'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 import dayjs from 'dayjs'
@@ -7,6 +6,8 @@ import dayjs from 'dayjs'
 const store = useStore()
 
 onMounted(() => {
+  // @ts-ignore
+  // eslint-disable-next-line no-undef
   mobiscroll.date('#applicantYYYY', {
     display: 'inline',
     dateFormat: 'yyyy-mm-dd',
