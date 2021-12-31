@@ -13,7 +13,77 @@ input:checked[type='checkbox'] {background-color:#666; -webkit-appearance:checkb
 button,input[type='button'],input[type='submit'],input[type='reset'],input[type='file'] {-webkit-appearance:button; border-radius:0}
 input[type='search']::-webkit-search-cancel-button {-webkit-appearance:none}
 body {background:#fff}
-body,th,td,input,select,textarea,button {font-size:14px;line-height:1.5;font-family: 'Noto Sans KR', sans-serif;color:#2b2b2b} /* color값은 디자인가이드에 맞게사용 */
+body,th,td,input,select,textarea,button {font-size:14px;line-height:1.5;font-family: 'Noto Sans KR', 'Roboto', sans-serif;color:#2b2b2b} /* color값은 디자인가이드에 맞게사용 */
 a {color:#333;text-decoration:none}
 a:active, a:hover {text-decoration:none}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
+
+.user-data {
+  dl {
+    display: flex;
+    height: calc(100vh - 50px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    dt {
+      h3 {
+        font-size: 30px;
+        font-weight: 400;
+      }
+    }
+    dd {
+      margin-top: 5vw;
+      .mbsc-ios .mbsc-sc-itm {
+        font-size: 1rem!important;
+      }
+    }
+  }
+  .ps {
+    margin-top: 20px;
+    padding: 10px;
+    ul {
+      li {
+        font-size: 12px;
+        font-weight: 100;
+        color: #222;
+        padding-left: 10px;
+        text-indent: -10px;
+        em {
+          font-weight: 400;
+          color: #e25c66;
+        }
+        &:before {
+          content: '\b7\a0';
+        }
+      }
+    }
+  }
+}
+.user-data-btn {
+  width: calc(100% - 20px);
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  button {
+    width: 65%;
+    height: 50px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    background-color: #e25c66;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #e25c66;
+    &:first-child {
+      width: calc(35% - 20px);
+      margin-right: 20px;
+      background-color: #fff;
+      color: #e25c66;
+      box-shadow: 0px 0px 10px #ccc;
+    }
+    &:disabled {
+      background-color: #ccc;
+      box-shadow: 0px 0px 10px #ccc;
+      color: #fff;
+    }
+  }
+}

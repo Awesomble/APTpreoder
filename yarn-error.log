@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/aosdinkim/.nvm/versions/node/v12.16.2/bin/node /Users/aosdinkim/.nvm/versions/node/v12.16.2/bin/yarn add @mobiscroll/vuejs@5.13.1 --save
+  /Users/aosdinkim/.nvm/versions/node/v12.16.2/bin/node /Users/aosdinkim/.nvm/versions/node/v12.16.2/bin/yarn add @mobiscroll/javascript4
 
 PATH: 
   /Users/aosdinkim/.nvm/versions/node/v12.16.2/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/aosdinkim/kjh/APTpreoder/node_modules/.bin:/Users/aosdinkim/flutter/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://npm.mobiscroll.com/@mobiscroll%2fvuejs: no such package available
+  Error: https://npm.mobiscroll.com/@mobiscroll%2fjavascript4: no such package available
       at Request.params.callback [as _callback] (/Users/aosdinkim/.nvm/versions/node/v12.16.2/lib/node_modules/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/Users/aosdinkim/.nvm/versions/node/v12.16.2/lib/node_modules/yarn/lib/cli.js:140662:22)
       at Request.emit (events.js:310:20)
@@ -59,6 +59,20 @@ npm manifest:
       "typescript": "^4.4.3",
       "vite": "^2.6.4",
       "vue-tsc": "^0.3.0"
+    },
+    "eslintConfig": {
+      "root": true,
+      "env": {
+        "node": true
+      },
+      "extends": [
+        "plugin:vue/essential",
+        "@vue/airbnb"
+      ],
+      "rules": {},
+      "parserOptions": {
+        "parser": "babel-eslint"
+      }
     }
   }
 

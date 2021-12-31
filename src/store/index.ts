@@ -1,23 +1,14 @@
-import { InjectionKey } from 'vue'
-import { createStore, Store, useStore as baseUseStore } from 'vuex'
-import RootStateTypes, { AllStateTypes } from './types'
+import { createStore } from 'vuex'
+import { state, State } from './state'
+import mutations from './mutations'
+import actions from './actions'
+import getters from './getters'
 
-import Common from './modules/Common'
-
-export const store = createStore<RootStateTypes>({
-  state: {
-    text: ''
-  },
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {
-    Common
-  }
+export const store = createStore<State>({
+  state,
+  getters,
+  actions,
+  mutations,
 })
 
-export const key: InjectionKey<Store<RootStateTypes>> = Symbol('vue-store')
-
-export function useStore<T = AllStateTypes>() {
-  return baseUseStore<T>(key)
-}
+export default store

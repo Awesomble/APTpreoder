@@ -1,9 +1,4 @@
-import NumFactoryStateTypes from './modules/Common/types'
-
-export default interface RootStateTypes {
-  text: string
-}
-
-export interface AllStateTypes extends RootStateTypes {
-  numFactoryModule: NumFactoryStateTypes
-}
+export const SET_SURPORT_TYPE = 'set_surport_type'
+export const SET_SURPORT_YYYY = 'set_surport_yyyy'
+export const SET_SURPORT_FAMILY = 'set_surport_family'
+export const SET_SURPORT_INCOME = 'set_surport_income'
