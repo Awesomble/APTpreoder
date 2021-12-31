@@ -7,7 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mobiscroll/javascript": "^4.10.9",
+    "@mobiscroll/javascript": "^4.10.7",
     "dayjs": "^1.10.7",
     "swiper": "^7.3.3",
     "vite-plugin-element-plus": "^0.0.12",
@@ -20,6 +20,7 @@
     "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",
     "@vitejs/plugin-vue": "^1.9.3",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.1.0",
@@ -27,6 +28,11 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.8.0",
     "node-sass": "^6.0.1",
+    "rollup": "^2.62.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sass": "^1.2.10",
     "sass": "^1.44.0",
     "sass-loader": "^12.3.0",
     "typescript": "^4.4.3",
@@ -46,5 +52,18 @@
     "parserOptions": {
       "parser": "babel-eslint"
     }
-  }
+  },
+  "description": "This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Awesomble/APTpreoder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Awesomble/APTpreoder/issues"
+  },
+  "homepage": "https://github.com/Awesomble/APTpreoder#readme"
 }

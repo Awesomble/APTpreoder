@@ -13,7 +13,6 @@ mobiscroll.settings = {
   lang: 'ko',
 }
 
-
 const app = createApp(App)
 
 app.use(
