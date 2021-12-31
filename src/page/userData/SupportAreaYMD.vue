@@ -16,7 +16,6 @@ const btnNext = () : void => {
 onMounted(() => {
   mobiscroll.date('#applicantYYYY', {
     display: 'inline',
-    selectType: 'year',
     dateFormat: 'yyyy-mm-dd',
     defaultValue: dayjs().subtract(1, 'year').toDate(),
     max: new Date(),

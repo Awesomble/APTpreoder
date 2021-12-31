@@ -4,19 +4,17 @@ import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
-const cntValues = []
+const cntValues : object[] = []
+const wheelsOptions : object = {
+  circular: false,
+  data: cntValues,
+  label: '납입횟수',
+}
 for (let i = 0; i <= 50; i += 1) {
   cntValues.push({
     display: i === 0 ? '1년미만' : `${i}년`,
     value: i,
   })
-}
-
-// 이전버튼
-const btnPrev = () : void => {
-}
-// 다음버튼
-const btnNext = () : void => {
 }
 
 onMounted(() => {
@@ -25,13 +23,7 @@ onMounted(() => {
     onChange(event: { valueText?: string }) {
       // store.dispatch('setSurportType', event.valueText)
     },
-    wheels: [
-      [{
-        circular: false,
-        data: cntValues,
-        label: '납입횟수',
-      }],
-    ],
+    wheels: [{ ...wheelsOptions }],
   })
 })
 </script>

@@ -4,8 +4,8 @@ import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
-const cntValues = []
-const amountValues = []
+const cntValues: any[] = []
+const amountValues: any[] = []
 
 // 이전버튼
 const btnPrev = () : void => {

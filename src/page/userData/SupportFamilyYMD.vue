@@ -5,12 +5,23 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
 
+export interface UserFamilyYMD {
+  parent1: string,
+  parent2: string,
+  my: string,
+  spouse: string,
+  children1: string,
+  children2: string,
+  children3: string,
+  children4: string,
+  children5: string,
+}
+
 const store = useStore()
 const router = useRouter()
 
-const iptFamily = computed(() : void => store.state.surportFamily.split(' '))
-const familyCnt = computed(() : void => store.getters.familyCnt)
-const data : object = {
+const iptFamily = computed(() : string => store.state.surportFamily.split(' '))
+const userFamilyYMD : any = {
   parent1: '',
   parent2: '',
   my: '',
@@ -24,41 +35,40 @@ const data : object = {
 
 // 다음버튼
 const btnNext = () : void => {
-  console.log(iptFamily.value)
-  if ((iptFamily.value[0] === '0' || iptFamily.value[0] === '2') && !data.parent1) {
+  if ((iptFamily.value[0] === '0' || iptFamily.value[0] === '2') && !userFamilyYMD.parent1) {
     alert('아버님 정보를 입력하세요.')
     return
   }
-  if ((iptFamily.value[0] === '0' || iptFamily.value[0] === '1') && !data.parent2) {
+  if ((iptFamily.value[0] === '0' || iptFamily.value[0] === '1') && !userFamilyYMD.parent2) {
     alert('어머님 정보를 입력하세요.')
     return
   }
-  if (!data.my) {
+  if (!userFamilyYMD.my) {
     alert('신청자 정보를 입력하세요.')
     return
   }
-  if ((iptFamily.value[1] === '0' || iptFamily.value[1] === '2') && !data.spouse) {
+  if ((iptFamily.value[1] === '0' || iptFamily.value[1] === '2') && !userFamilyYMD.spouse) {
     alert('배우자 정보를 입력하세요.')
     return
   }
   if (Number(iptFamily.value[2]) > 0) {
-    if ((iptFamily.value[2] === '1') && !data.children1) {
+    if ((iptFamily.value[2] === '1') && !userFamilyYMD.children1) {
       alert('자녀 정보를 입력하세요.')
       return
     }
-    if (iptFamily.value[2] === '2' && (!data.children1 || !data.children2)) {
+    if (iptFamily.value[2] === '2' && (!userFamilyYMD.children1 || !userFamilyYMD.children2)) {
       alert('자녀 정보를 입력하세요.')
       return
     }
-    if (iptFamily.value[2] === '3' && (!data.children1 || !data.children2 || !data.children3)) {
+    if (iptFamily.value[2] === '3' && (!userFamilyYMD.children1 || !userFamilyYMD.children2 || !userFamilyYMD.children3)) {
       alert('자녀 정보를 입력하세요.')
       return
     }
-    if (iptFamily.value[2] === '4' && (!data.children1 || !data.children2 || !data.children3 || !data.children4)) {
+    if (iptFamily.value[2] === '4' && (!userFamilyYMD.children1 || !userFamilyYMD.children2 || !userFamilyYMD.children3 || !userFamilyYMD.children4)) {
       alert('자녀 정보를 입력하세요.')
       return
     }
-    if (iptFamily.value[2] === '5' && (!data.children1 || !data.children2 || !data.children3 || !data.children4 || !data.children5)) {
+    if (iptFamily.value[2] === '5' && (!userFamilyYMD.children1 || !userFamilyYMD.children2 || !userFamilyYMD.children3 || !userFamilyYMD.children4 || !userFamilyYMD.children5)) {
       alert('자녀 정보를 입력하세요.')
       return
     }
@@ -67,7 +77,7 @@ const btnNext = () : void => {
   router.push({ name: 'supportArea' })
 }
 
-const mobiOpt1 = {
+const mobiOpt1: any = {
   display: 'bottom',
   selectType: 'year',
   dateFormat: 'yyyy',
@@ -75,7 +85,7 @@ const mobiOpt1 = {
   max: new Date(),
   min: new Date(1930, 0, 1),
 }
-const mobiOpt2 = {
+const mobiOpt2: any = {
   display: 'bottom',
   selectType: 'year',
   dateFormat: 'yyyy-mm-dd',
@@ -87,64 +97,64 @@ onMounted(() => {
   mobiscroll.date('#parents1', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
-      data.parent1 = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.parent1 = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
   mobiscroll.date('#parents2', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
-      data.parent2 = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.parent2 = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
   mobiscroll.date('#my', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
-      data.my = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.my = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
   mobiscroll.date('#spouse', {
     ...mobiOpt1,
     onSet(event: { valueText?: string }) {
-      data.spouse = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.spouse = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
   mobiscroll.date('#children1', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
-      data.children1 = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.children1 = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
   mobiscroll.date('#children2', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
-      data.children2 = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.children2 = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
   mobiscroll.date('#children3', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
-      data.children3 = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.children3 = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
   mobiscroll.date('#children4', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
-      data.children4 = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.children4 = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
   mobiscroll.date('#children5', {
     ...mobiOpt2,
     onSet(event: { valueText?: string }) {
-      data.children5 = event.valueText
-      store.dispatch('setSurportYYYY', data)
+      userFamilyYMD.children5 = event.valueText
+      store.dispatch('setSurportYYYY', userFamilyYMD)
     },
   })
 })

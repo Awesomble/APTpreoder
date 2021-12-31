@@ -6,9 +6,9 @@ import {
 import { useStore } from 'vuex'
 
 const store = useStore()
-const myAverage = computed(() : void => store.getters.myAverage)
-const iptFamily = computed(() : void => store.state.surportFamily.split(' '))
-const mobiOpt = {
+const myAverage = computed(() : number => store.getters.myAverage)
+const iptFamily = computed(() : string[] => store.state.surportFamily.split(' '))
+const mobiOpt: any = {
   preset: 'decimal',
   scale: 0,
   min: -999999,
@@ -26,13 +26,15 @@ onMounted(() => {
   mobiscroll.numpad('#ipt1', {
     ...mobiOpt,
     onSet(event: { valueText?: string }) {
-      store.dispatch('setSurportIncome', { key: 'my', value: Number(event.valueText.replace(/\,/g, '')) })
+      const { valueText } = event
+      store.dispatch('setSurportIncome', { key: 'my', value: valueText ? Number(valueText.replace(/\,/g, '')) : 0 })
     },
   })
   mobiscroll.numpad('#ipt2', {
     ...mobiOpt,
     onSet(event: { valueText?: string }) {
-      store.dispatch('setSurportIncome', { key: 'spouse', value: Number(event.valueText.replace(/\,/g, '')) })
+      const { valueText } = event
+      store.dispatch('setSurportIncome', { key: 'spouse', value: valueText ? Number(valueText.replace(/\,/g, '')) : 0 })
     },
   })
 })
