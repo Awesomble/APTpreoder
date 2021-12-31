@@ -7,6 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mobiscroll/javascript": "^4.10.7",
     "dayjs": "^1.10.7",
     "swiper": "^7.3.3",
     "vite-plugin-element-plus": "^0.0.12",
