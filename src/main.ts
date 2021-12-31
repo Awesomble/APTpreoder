@@ -5,6 +5,12 @@ import router from '@/router'
 import store from '@/store'
 import '@/assets/css/style.scss'
 
+declare global {
+    interface Window {
+        mobiscroll: any
+    }
+}
+
 // @ts-ignore
 // eslint-disable-next-line no-undef
 mobiscroll.settings = {
