@@ -17,6 +17,7 @@ for (let i = 0; i <= 50; i += 1) {
   })
 }
 
+
 onMounted(() => {
   mobiscroll.scroller('#applicantHomeLess', {
     display: 'inline',
