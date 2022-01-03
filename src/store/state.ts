@@ -42,8 +42,8 @@ export function state() {
     surportAreaYMD: localStorage.surportAreaYMD || '',
     surportHomeLessYMD: localStorage.surportHomeLessYMD || '',
     surportBank: localStorage.surportBank || '',
-    surportIncomeMy: 0,
-    surportIncomeSpouse: 0,
+    surportIncomeMy: localStorage.surportIncomeMy || 0,
+    surportIncomeSpouse: localStorage.surportIncomeSpouse || 0,
     average: [
       [0, 1495816, 2281268, 3120260, 3547103, 3547103, 3696824, 3889012, 4081200], // 50%
       [0, 1794979, 2737521, 3744312, 4256523, 4256523, 4436188, 4666814, 4897439], // 60%

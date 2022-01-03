@@ -19,7 +19,7 @@ export default {
   },
   myAverage(state: State, getters: any) : number {
     let average = 0
-    if (state.surportIncomeMy) {
+    if (state.surportIncomeMy || state.surportIncomeSpouse) {
       const C = state.surportIncomeMy + state.surportIncomeSpouse
       if (C <= state.average[0][getters.familyCnt]) average = 50
       else if (C > state.average[0][getters.familyCnt]

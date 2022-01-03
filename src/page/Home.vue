@@ -10,7 +10,7 @@
 
 <template>
   <div class="intro">
-    <h1><img src="@/assets/images/logo.png" alt="어썸블 사전청약 로고"></h1>
+    <h1><img src="@/assets/images/logo.png" alt="어썸블 청약 가점계산기 로고">어썸블 청약 가점계산기</h1>
     <router-link :to="{ name: 'supportType' }">사전청약 시작</router-link>
   </div>
 </template>
@@ -24,6 +24,9 @@
   height: 100vh;
   background-color: #75CEFF;
   h1 {
+    font-size: 0;
+    color: #75CEFF;
+    text-indent: -99999;
     img {
       width: 30vw;
     }
