@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import mobiscroll from '@mobiscroll/javascript'
 
 const store = useStore()
+const surportBank = computed(() : number[] => store.state.surportBank.split(' ').map((n: string | number) => +n))
 const cntValues: any[] = []
 const amountValues: any[] = []
 
@@ -21,13 +22,15 @@ for (let i = 0; i <= 100000000; i += 100000) {
 }
 
 onMounted(() => {
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.scroller('#applicantBank', {
     display: 'inline',
     showLabel: true,
+    onInit(event: any, inst: any) {
+      inst.setVal(surportBank.value)
+    },
     onChange(event: { valueText?: string }) {
-      // store.dispatch('setSurportType', event.valueText)
+      console.log(event.valueText)
+      store.dispatch('setSurportBank', event.valueText)
     },
     wheels: [
       [{

@@ -1,17 +1,47 @@
+export interface SurportFamilyYMD {
+  parent1: string,
+  parent2: string,
+  my: string,
+  spouse: string,
+  children1: string,
+  children2: string,
+  children3: string,
+  children4: string,
+  children5: string,
+}
+
 export interface State {
   average: any;
-  surportIncomeMy: number,
   surportIncomeSpouse: number,
   surportType: string;
-  surportYYYY: object;
   surportFamily: string;
+  surportFamilyYMD: SurportFamilyYMD
+  surportArea: string;
+  surportAreaYMD: string;
+  surportHomeLessYMD: string;
+  surportBank: string;
+  surportIncomeMy: number,
 }
 
 export function state() {
   return {
-    surportType: '',
-    surportYYYY: {},
-    surportFamily: '',
+    surportType: localStorage.surportType || '0',
+    surportFamily: localStorage.surportFamily || '0 0 0',
+    surportFamilyYMD: {
+      parent1: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).parent1 : '',
+      parent2: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).parent2 : '',
+      my: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).my : '',
+      spouse: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).spouse : '',
+      children1: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).children1 : '',
+      children2: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).children2 : '',
+      children3: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).children3 : '',
+      children4: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).children4 : '',
+      children5: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).children5 : '',
+    },
+    surportArea: localStorage.surportArea || '0 0',
+    surportAreaYMD: localStorage.surportAreaYMD || '',
+    surportHomeLessYMD: localStorage.surportHomeLessYMD || '',
+    surportBank: localStorage.surportBank || '',
     surportIncomeMy: 0,
     surportIncomeSpouse: 0,
     average: [

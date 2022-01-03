@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import mobiscroll from '@mobiscroll/javascript'
 
 const store = useStore()
+const surportFamily = computed(() : number[] => store.state.surportFamily.split(' ').map((n: string | number) => +n))
 
 onMounted(() => {
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.treelist('#applicantArea', {
     display: 'inline',
     layout: 'liquid',
-    placeholder: '결혼유무및 자녁수',
+    placeholder: '신청자 가족구성',
+    defaultValue: surportFamily.value,
     showInput: false,
     onShow(event: { valueText?: string }) {
-      console.log(event.valueText)
       store.dispatch('setSurportFamily', event.valueText)
     },
     onChange(event: { valueText?: string }) {
-      console.log(event.valueText)
       store.dispatch('setSurportFamily', event.valueText)
     },
   })

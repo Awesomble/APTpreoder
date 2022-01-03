@@ -22,17 +22,29 @@ export default {
     if (state.surportIncomeMy) {
       const C = state.surportIncomeMy + state.surportIncomeSpouse
       if (C <= state.average[0][getters.familyCnt]) average = 50
-      else if (C > state.average[0][getters.familyCnt] && C <= state.average[1][getters.familyCnt]) average = 60
-      else if (C > state.average[1][getters.familyCnt] && C <= state.average[2][getters.familyCnt]) average = 70
-      else if (C > state.average[2][getters.familyCnt] && C <= state.average[3][getters.familyCnt]) average = 80
-      else if (C > state.average[3][getters.familyCnt] && C <= state.average[4][getters.familyCnt]) average = 90
-      else if (C > state.average[4][getters.familyCnt] && C <= state.average[5][getters.familyCnt]) average = 100
-      else if (C > state.average[5][getters.familyCnt] && C <= state.average[6][getters.familyCnt]) average = 110
-      else if (C > state.average[6][getters.familyCnt] && C <= state.average[7][getters.familyCnt]) average = 120
-      else if (C > state.average[7][getters.familyCnt] && C <= state.average[8][getters.familyCnt]) average = 130
-      else if (C > state.average[8][getters.familyCnt] && C <= state.average[9][getters.familyCnt]) average = 140
-      else if (C > state.average[9][getters.familyCnt] && C <= state.average[10][getters.familyCnt]) average = 150
-      else if (C > state.average[10][getters.familyCnt]) average = 160
+      else if (C > state.average[0][getters.familyCnt]
+          && C <= state.average[1][getters.familyCnt]) average = 60
+      else if (C > state.average[1][getters.familyCnt]
+          && C <= state.average[2][getters.familyCnt]) average = 70
+      else if (C > state.average[2][getters.familyCnt]
+          && C <= state.average[3][getters.familyCnt]) average = 80
+      else if (C > state.average[3][getters.familyCnt]
+          && C <= state.average[4][getters.familyCnt]) average = 90
+      else if (C > state.average[4][getters.familyCnt]
+          && C <= state.average[5][getters.familyCnt]) average = 100
+      else if (C > state.average[5][getters.familyCnt]
+          && C <= state.average[6][getters.familyCnt]) average = 110
+      else if (C > state.average[6][getters.familyCnt]
+          && C <= state.average[7][getters.familyCnt]) average = 120
+      else if (C > state.average[7][getters.familyCnt]
+          && C <= state.average[8][getters.familyCnt]) average = 130
+      else if (C > state.average[8][getters.familyCnt]
+          && C <= state.average[9][getters.familyCnt]) average = 140
+      else if (C > state.average[9][getters.familyCnt]
+          && C <= state.average[10][getters.familyCnt]) average = 150
+      else if (C > state.average[10][getters.familyCnt]
+          && C <= state.average[11][getters.familyCnt]) average = 160
+      else if (C > state.average[11][getters.familyCnt]) average = 170
     }
     return average
   },

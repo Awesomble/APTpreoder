@@ -1,18 +1,22 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import mobiscroll from '@mobiscroll/javascript'
 
 const store = useStore()
+const surportArea = computed(() : number[] => store.state.surportArea.split(' ').map((n: string | number) => +n))
 
 onMounted(() => {
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
+  console.log(surportArea.value)
   mobiscroll.treelist('#applicantArea', {
     display: 'inline',
     layout: 'liquid',
     placeholder: '주거지역선택',
+    defaultValue: surportArea.value,
     showInput: false,
+    onSet(event: { valueText?: string }) {
+      store.dispatch('setSurportArea', event.valueText)
+    },
   })
 })
 </script>

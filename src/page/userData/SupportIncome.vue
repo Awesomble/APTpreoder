@@ -23,8 +23,6 @@ const btnNext = () : void => {
 }
 
 onMounted(() => {
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.numpad('#ipt1', {
     ...mobiOpt,
     onSet(event: { valueText?: string }) {
@@ -32,8 +30,6 @@ onMounted(() => {
       store.dispatch('setSurportIncome', { key: 'my', value: valueText ? Number(valueText.replace(/\,/g, '')) : 0 })
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.numpad('#ipt2', {
     ...mobiOpt,
     onSet(event: { valueText?: string }) {
@@ -60,8 +56,10 @@ onMounted(() => {
         </label>
         <div class="ps">
           <ul>
-            <li v-if="myAverage">전년도 도시근로자 가구당 월평균소득 기준 <em>{{ myAverage }}%</em> 이하입니다. </li>
-            <li v-show="iptFamily[1] === '0' || iptFamily[1] === '2'"><em>맞벌이</em> 소득란은 <em>공고일 기준</em> 배우자소득이 있을때만 입력합니다.</li>
+            <li v-if="myAverage">전년도 도시근로자 가구당 월평균소득 기준
+               <em>{{ myAverage === 170 ? '160% 이상입니다.' : myAverage + '% 이하입니다.' }}</em></li>
+            <li v-show="iptFamily[1] === '0' || iptFamily[1] === '2'">
+              <em>맞벌이</em> 소득란은 <em>공고일 기준</em> 배우자소득이 있을때만 입력합니다.</li>
             <li><em>맞벌이</em>외 다른 <em>직계존속</em>의 소득은 합산하여 신청자 소득에 입력합니다.</li>
           </ul>
         </div>

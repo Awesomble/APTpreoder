@@ -1,36 +1,25 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
 import mobiscroll from '@mobiscroll/javascript'
-
-export interface UserFamilyYMD {
-  parent1: string,
-  parent2: string,
-  my: string,
-  spouse: string,
-  children1: string,
-  children2: string,
-  children3: string,
-  children4: string,
-  children5: string,
-}
+import { SurportFamilyYMD } from '@/store/state'
 
 const store = useStore()
 const router = useRouter()
-
+const surportFamilyYMD = computed(() : SurportFamilyYMD => store.state.surportFamilyYMD)
 const iptFamily = computed(() : string => store.state.surportFamily.split(' '))
-const userFamilyYMD : any = {
-  parent1: '',
-  parent2: '',
-  my: '',
-  spouse: '',
-  children1: '',
-  children2: '',
-  children3: '',
-  children4: '',
-  children5: '',
+const userFamilyYMD : SurportFamilyYMD = {
+  parent1: surportFamilyYMD.value.parent1,
+  parent2: surportFamilyYMD.value.parent2,
+  my: surportFamilyYMD.value.my,
+  spouse: surportFamilyYMD.value.spouse,
+  children1: surportFamilyYMD.value.children1,
+  children2: surportFamilyYMD.value.children2,
+  children3: surportFamilyYMD.value.children3,
+  children4: surportFamilyYMD.value.children4,
+  children5: surportFamilyYMD.value.children5,
 }
 
 // 다음버튼
@@ -73,15 +62,17 @@ const btnNext = () : void => {
       return
     }
   }
-
+  store.dispatch('setSurportFamilyYMD', userFamilyYMD)
   router.push({ name: 'supportArea' })
 }
+const date1960 = new Date(1960, 0, 1)
+const date1980 = new Date(1970, 0, 1)
+const date1990 = new Date(1990, 0, 1)
 
 const mobiOpt1: any = {
   display: 'bottom',
   selectType: 'year',
   dateFormat: 'yyyy',
-  defaultValue: new Date(1970, 0, 1),
   max: new Date(),
   min: new Date(1930, 0, 1),
 }
@@ -89,90 +80,80 @@ const mobiOpt2: any = {
   display: 'bottom',
   selectType: 'year',
   dateFormat: 'yyyy-mm-dd',
-  defaultValue: new Date(1990, 0, 1),
   max: dayjs().add(1, 'year').toDate(),
-  min: new Date(1990, 0, 1),
+  min: new Date(1980, 0, 1),
 }
 onMounted(() => {
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#parents1', {
     ...mobiOpt1,
+    defaultValue: surportFamilyYMD.value.parent1 || date1960,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.parent1 = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.parent1 = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#parents2', {
     ...mobiOpt1,
+    defaultValue: surportFamilyYMD.value.parent2 || date1960,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.parent2 = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.parent2 = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#my', {
     ...mobiOpt1,
+    defaultValue: surportFamilyYMD.value.my || date1980,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.my = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.my = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#spouse', {
     ...mobiOpt1,
+    defaultValue: surportFamilyYMD.value.spouse || date1980,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.spouse = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.spouse = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#children1', {
     ...mobiOpt2,
+    defaultValue: surportFamilyYMD.value.children1 || date1990,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.children1 = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.children1 = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#children2', {
     ...mobiOpt2,
+    defaultValue: surportFamilyYMD.value.children2 || date1990,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.children2 = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.children2 = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#children3', {
     ...mobiOpt2,
+    defaultValue: surportFamilyYMD.value.children3 || date1990,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.children3 = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.children3 = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#children4', {
     ...mobiOpt2,
+    defaultValue: surportFamilyYMD.value.children4 || date1990,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.children4 = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.children4 = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
   mobiscroll.date('#children5', {
     ...mobiOpt2,
+    defaultValue: surportFamilyYMD.value.children5 || date1990,
     onSet(event: { valueText?: string }) {
-      userFamilyYMD.children5 = event.valueText
-      store.dispatch('setSurportYYYY', userFamilyYMD)
+      userFamilyYMD.children5 = event.valueText ? event.valueText : ''
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
 })
@@ -186,40 +167,49 @@ onMounted(() => {
       <dd>
         <label for="parents1" v-if="iptFamily[0] === '0' || iptFamily[0] === '2'">
           아버님 :
-          <input id="parents1" type="tel" placeholder="YYYY">
+          <input id="parents1" type="tel" placeholder="YYYY"
+                 :value="surportFamilyYMD.parent1">
         </label>
         <label for="parents2" v-if="iptFamily[0] === '0' || iptFamily[0] === '1'">
           어머님 :
-          <input id="parents2" type="tel" placeholder="YYYY">
+          <input id="parents2" type="tel" placeholder="YYYY"
+                 :value="surportFamilyYMD.parent2">
         </label>
         <label for="my">
           신청자 :
-          <input id="my" type="tel" placeholder="YYYY">
+          <input id="my" type="tel" placeholder="YYYY"
+                 :value="surportFamilyYMD.my">
         </label>
         <label for="spouse" v-if="iptFamily[1] === '0' || iptFamily[1] === '2'">
           배우자 :
-          <input id="spouse" type="tel" placeholder="YYYY">
+          <input id="spouse" type="tel" placeholder="YYYY"
+                 :value="surportFamilyYMD.spouse">
         </label>
         <div v-if="iptFamily[2] !== '0'">
           <label for="children1" v-if="Number(iptFamily[2]) > 0">
             자녀 1 :
-            <input id="children1" type="tel" placeholder="YYYY-MM-DD">
+            <input id="children1" type="tel" placeholder="YYYY-MM-DD"
+                   :value="surportFamilyYMD.children1">
           </label>
           <label for="children2" v-if="Number(iptFamily[2]) > 1">
             자녀 2 :
-            <input id="children2" type="tel" placeholder="YYYY-MM-DD">
+            <input id="children2" type="tel" placeholder="YYYY-MM-DD"
+                   :value="surportFamilyYMD.children2">
           </label>
           <label for="children3" v-if="Number(iptFamily[2]) > 2">
             자녀 3 :
-            <input id="children3" type="tel" placeholder="YYYY-MM-DD">
+            <input id="children3" type="tel" placeholder="YYYY-MM-DD"
+                   :value="surportFamilyYMD.children3">
           </label>
           <label for="children4" v-if="Number(iptFamily[2]) > 3">
             자녀 4 :
-            <input id="children4" type="tel" placeholder="YYYY-MM-DD">
+            <input id="children4" type="tel" placeholder="YYYY-MM-DD"
+                   :value="surportFamilyYMD.children4">
           </label>
           <label for="children5" v-if="Number(iptFamily[2]) > 4">
             자녀 5 :
-            <input id="children5" type="tel" placeholder="YYYY-MM-DD">
+            <input id="children5" type="tel" placeholder="YYYY-MM-DD"
+                   :value="surportFamilyYMD.children5">
           </label>
         </div>
         <div class="ps">

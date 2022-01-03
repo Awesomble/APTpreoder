@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import mobiscroll from '@mobiscroll/javascript'
 
-const store = useStore()
-const cntValues : object[] = []
-const wheelsOptions : object = {
-  circular: false,
-  data: cntValues,
-  label: '납입횟수',
+interface CntValues {
+  value: number,
+  display: string,
 }
+
+const store = useStore()
+const cntValues : Array<CntValues> = []
+const surportHomeLessYMD = computed(() : number[] => store.state.surportHomeLessYMD.split(' ').map((n: string | number) => +n))
+
 for (let i = 0; i <= 50; i += 1) {
   cntValues.push({
     display: i === 0 ? '1년미만' : `${i}년`,
@@ -18,14 +20,16 @@ for (let i = 0; i <= 50; i += 1) {
 }
 
 onMounted(() => {
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
-  mobiscroll.scroller('#applicantHomeLess', {
+  mobiscroll.treelist('#applicantArea', {
     display: 'inline',
-    onChange(event: { valueText?: string }) {
-      // store.dispatch('setSurportType', event.valueText)
+    showInput: false,
+    defaultValue: surportHomeLessYMD.value,
+    onShow(event: { valueText?: string }) {
+      store.dispatch('setSurportHomeLessYMD', event.valueText)
     },
-    wheels: [{ ...wheelsOptions }],
+    onChange(event: { valueText?: string }) {
+      store.dispatch('setSurportHomeLessYMD', event.valueText)
+    },
   })
 })
 </script>
@@ -36,7 +40,12 @@ onMounted(() => {
         <h3>무주택 기간</h3>
       </dt>
       <dd>
-        <input type="text" id="applicantHomeLess" v-show="false">
+        <ul id="applicantArea" class="mbsc-cloak">
+          <li v-for="s in cntValues"
+              :key="`hrSelect${s.value}`"
+              :value="s.value"
+          >{{ s.display }}</li>
+        </ul>
       </dd>
     </dl>
   </div>

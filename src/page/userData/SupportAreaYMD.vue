@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import dayjs from 'dayjs'
 import mobiscroll from '@mobiscroll/javascript'
 
 const store = useStore()
+const surportAreaYMD = computed(() : string => store.state.surportAreaYMD)
 
 onMounted(() => {
-  // @ts-ignore
-  // eslint-disable-next-line no-undef
-  mobiscroll.date('#applicantYYYY', {
+  mobiscroll.date('#supportAreaYMD', {
     display: 'inline',
     dateFormat: 'yyyy-mm-dd',
-    defaultValue: dayjs().subtract(1, 'year').toDate(),
+    defaultValue: surportAreaYMD.value || dayjs().subtract(1, 'year').toDate(),
     max: new Date(),
     min: new Date(1950, 0, 1),
     onChange(event: { valueText?: string }) {
-      store.dispatch('setSurportType', event.valueText)
+      store.dispatch('setSurportAreaYMD', event.valueText)
     },
   })
 })
@@ -28,7 +27,7 @@ onMounted(() => {
         <h3>신청자 주거지역 전입일</h3>
       </dt>
       <dd>
-        <input type="text" id="applicantYYYY" v-show="false">
+        <input type="text" id="supportAreaYMD" v-show="false">
       </dd>
     </dl>
   </div>
