@@ -11,7 +11,7 @@
 <template>
   <div class="intro">
     <h1><img src="@/assets/images/logo.png" alt="어썸블 청약 가점계산기 로고">어썸블 청약 가점계산기</h1>
-    <router-link :to="{ name: 'supportType' }">사전청약 시작</router-link>
+    <router-link :to="{ name: 'supportType' }">시작하기</router-link>
   </div>
 </template>
 
