@@ -13,7 +13,7 @@
       </colgroup>
       <tbody>
         <tr>
-          <td rowspan="2">왕숙<br>B2</td>
+          <td rowspan="2" class="thubm">왕숙<br>B2</td>
           <td>내용</td>
           <td>내용</td>
           <td>내용</td>
@@ -36,5 +36,11 @@
   width:100%;
   text-align: center;
   vertical-align: middle;
+  overflow: hidden;
+  .thubm {
+    color: #fff;
+    padding: 0;
+    background-color: #3f97f6;
+  }
 }
 </style>

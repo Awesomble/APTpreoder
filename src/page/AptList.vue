@@ -64,7 +64,6 @@ import AptWangsookB1 from '@/components/list/AptWangsookB1.vue'
     z-index:1;
     li{
       margin:20px;
-      padding:20px;
       min-height:60px;
       border:1px solid #000;
       border-radius:10px;
