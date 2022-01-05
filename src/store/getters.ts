@@ -17,6 +17,14 @@ export default {
     else if (f[2] === '5') cnt += 5 // 자녀3
     return cnt
   },
+  surportType(state: State) : string {
+    if (state.surportType === '0') return '신혼부부·한부모'
+    else if (state.surportType === '1') return '다자녀가구'
+    else if (state.surportType === '2') return '생애최초'
+    else if (state.surportType === '3') return '노부모부양'
+    else if (state.surportType === '4') return '일반공급'
+    return ''
+  },
   myAverage(state: State, getters: any) : number {
     let average = 0
     if (state.surportIncomeMy || state.surportIncomeSpouse) {
