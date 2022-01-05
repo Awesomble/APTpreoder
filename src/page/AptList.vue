@@ -63,8 +63,9 @@ import AptWangsookB1 from '@/components/list/AptWangsookB1.vue'
   .aptList{
     z-index:1;
     li{
+      overflow: hidden;
       margin:20px;
-      min-height:60px;
+      min-height:30px;
       border:1px solid #000;
       border-radius:10px;
     }
