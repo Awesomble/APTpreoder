@@ -14,7 +14,7 @@ const surportHomeLessYMD = computed(() : number[] => store.state.surportHomeLess
 
 for (let i = 0; i <= 50; i += 1) {
   cntValues.push({
-    display: i === 0 ? '1년미만' : `${i}년`,
+    display: i === 0 ? '6개월 이상' : `${i}년 이상`,
     value: i,
   })
 }
@@ -24,10 +24,12 @@ onMounted(() => {
     display: 'inline',
     showInput: false,
     defaultValue: surportHomeLessYMD.value,
-    onShow(event: { valueText?: string }) {
+    onShow(event: { valueText?: string, value?: string }) {
+      console.log(event.valueText)
       store.dispatch('setSurportHomeLessYMD', event.valueText)
     },
-    onChange(event: { valueText?: string }) {
+    onChange(event: { valueText?: string, value?: string }) {
+      console.log(event.valueText, event)
       store.dispatch('setSurportHomeLessYMD', event.valueText)
     },
   })
@@ -43,9 +45,13 @@ onMounted(() => {
         <ul id="applicantArea" class="mbsc-cloak">
           <li v-for="s in cntValues"
               :key="`hrSelect${s.value}`"
-              :value="s.value"
           >{{ s.display }}</li>
         </ul>
+        <div class="ps">
+          <ul>
+            <li>세대원 모두 <em>무주택</em>만 지원 가능합니다.</li>
+          </ul>
+        </div>
       </dd>
     </dl>
   </div>

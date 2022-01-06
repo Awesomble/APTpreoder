@@ -2,10 +2,21 @@
 import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import mobiscroll from '@mobiscroll/javascript'
+import {SurportFamilyYMD} from "@/store/state";
 
 const store = useStore()
 const surportFamily = computed(() : number[] => store.state.surportFamily.split(' ').map((n: string | number) => +n))
-
+const userFamilyYMD : SurportFamilyYMD = {
+  parent1: '',
+  parent2: '',
+  my: '',
+  spouse: '',
+  children1: '',
+  children2: '',
+  children3: '',
+  children4: '',
+  children5: '',
+}
 onMounted(() => {
   mobiscroll.treelist('#applicantArea', {
     display: 'inline',
@@ -18,6 +29,7 @@ onMounted(() => {
     },
     onChange(event: { valueText?: string }) {
       store.dispatch('setSurportFamily', event.valueText)
+      store.dispatch('setSurportFamilyYMD', userFamilyYMD)
     },
   })
 })
@@ -94,6 +106,37 @@ onMounted(() => {
         </li>
         <li>
           아버님
+          <ul>
+            <li>기혼
+              <ul>
+                <li>자녀 0명
+                </li>
+                <li>자녀 1명
+                </li>
+                <li>자녀 2명
+                </li>
+                <li>자녀 3명
+                </li>
+                <li>자녀 4명</li>
+                <li>자녀 5명</li>
+              </ul>
+            </li>
+            <li>한부모
+              <ul>
+                <li>자녀 0명</li>
+                <li>자녀 1명</li>
+                <li>자녀 2명</li>
+                <li>자녀 3명</li>
+                <li>자녀 4명</li>
+                <li>자녀 5명</li>
+              </ul>
+            </li>
+            <li>예비부부</li>
+            <li>미혼</li>
+          </ul>
+        </li>
+        <li>
+          미부양
           <ul>
             <li>기혼
               <ul>

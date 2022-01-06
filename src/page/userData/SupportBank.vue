@@ -54,6 +54,11 @@ onMounted(() => {
       </dt>
       <dd>
         <input type="text" id="applicantBank" v-show="false">
+        <div class="ps">
+          <ul>
+            <li><em>공고일</em>이전 까지의 납입횟수및 인정금액을 입력합니다.</li>
+          </ul>
+        </div>
       </dd>
     </dl>
   </div>

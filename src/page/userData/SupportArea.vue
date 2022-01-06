@@ -7,7 +7,6 @@ const store = useStore()
 const surportArea = computed(() : number[] => store.state.surportArea.split(' ').map((n: string | number) => +n))
 
 onMounted(() => {
-  console.log(surportArea.value)
   mobiscroll.treelist('#applicantArea', {
     display: 'inline',
     layout: 'liquid',
