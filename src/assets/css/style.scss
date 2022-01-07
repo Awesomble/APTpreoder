@@ -7,12 +7,11 @@ blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
 input,select,textarea,button {font-size:100%;vertical-align:middle}
 button {border:0 none;background-color:transparent;cursor:pointer}
 table {border-collapse:collapse;border-spacing:0}
-body {-webkit-text-size-adjust:none} /* 뷰표트 변환시 폰트크기 자동확대 방지 */
+body {-webkit-text-size-adjust:none;overflow-y: auto;} /* 뷰표트 변환시 폰트크기 자동확대 방지 */
 input[type='text'],input[type='password'],input[type='submit'],input[type='search'] {-webkit-appearance:none; border-radius:0}
 input:checked[type='checkbox'] {background-color:#666; -webkit-appearance:checkbox}
 button,input[type='button'],input[type='submit'],input[type='reset'],input[type='file'] {-webkit-appearance:button; border-radius:0}
 input[type='search']::-webkit-search-cancel-button {-webkit-appearance:none}
-body {background:#fff;height:100vh;overflow: hidden;overflow-y: auto;}
 body,th,td,input,select,textarea,button {font-size:14px;line-height:1.5;font-family: 'Noto Sans KR', 'Roboto', sans-serif;color:#2b2b2b} /* color값은 디자인가이드에 맞게사용 */
 a {color:#333;text-decoration:none}
 a:active, a:hover {text-decoration:none}
@@ -21,7 +20,6 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 
 .user-data {
   position:relative;
-  overflow-y: auto;
   height: calc(100vh - 70px);
   dl {
     position:absolute;
@@ -103,45 +101,61 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
   width:100%;
   text-align: center;
   vertical-align: middle;
-  overflow: hidden;
   .type {
     td {
       font-size: 12px;
-      background-color: #f2f2f2;
+      background-color: #f1f1f1;
     }
     .thubm {
       position: relative;
-      padding: 20px;
       color: #fff;
       font-size: 1.8rem;
       font-weight: 800;
     }
-  }
-  .tit {
-    td {
+    .tit {
       font-size: 1.2rem;
       border-bottom: 1px solid #ebebeb;
     }
   }
   .score {
-    background-color: #fff;
+    background-color: #f5f5f5;
     td {
       font-size: 0.8rem;
       font-weight: 800;
+      padding: 5px 0;
       .score {
         font-size: 1rem;
         font-weight: 900;
+      }
+      &.opt {
+        text-align: left;
       }
       .error {
         font-size: 1rem;
         color: red;
       }
-      .ranking, .area, .first {
+      .ranking1, .ranking2, .area, .first {
         font-size: 0.3rem;
-        padding: 1px 5px;
+        padding: 2px 10px;
         background-color: #ccc;
         border-radius: 10px;
         margin-right: 2px;
+      }
+      .ranking1 {
+        background-color: #00539C;
+        color: #FCF6F5;
+      }
+      .ranking2 {
+        background-color: #6A7BA2;
+        color: #FCF6F5;
+      }
+      .area {
+        background-color:#2BAE66;
+        color: #FCF6F5;
+      }
+      .first {
+        background-color: #333D79;
+        color: #FCF6F5;
       }
     }
   }

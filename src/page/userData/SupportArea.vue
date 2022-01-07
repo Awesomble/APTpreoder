@@ -14,6 +14,7 @@ onMounted(() => {
     defaultValue: surportArea.value,
     showInput: false,
     onSet(event: { valueText?: string }) {
+      console.log(event.valueText)
       store.dispatch('setSurportArea', event.valueText)
     },
   })

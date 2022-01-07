@@ -125,12 +125,12 @@ if (surportFamily.value[1] === 2) score3.value = 0
 if (myAverage.value > 130) score3.value = 0
 
 // ❤️일반
-if (myAverage.value > 100) score5.value = false
+if (myAverage.value > 100) score5.value = 0
 if (surportBank.value[0] >= 24) score4Ranking1.value = true
 else score4Ranking2.value = true
 
 // 당해
-if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
+if (surportArea.value[0] === 1 && surportArea.value[1] === 0) {
   if (dayjs(noticeDt).diff(dayjs(surportAreaYMD.value), 'day') >= 365) {
     score1Area.value = true
     score3Area.value = true
@@ -155,10 +155,10 @@ if (surportArea.value[0] === 1) {
       </colgroup>
       <tbody>
       <tr class="type">
-        <td class="thubm" style="background-color: #3f97f6;">
-          A1
+        <td class="thubm" style="background-color: #F266C8;">
+          S6
         </td>
-        <td colspan="2" class="tit">경기도 낭양주 왕숙</td>
+        <td colspan="2" class="tit">경기도 고양 창릉</td>
       </tr>
       <tr class="score">
         <td>신혼·한부모</td>
