@@ -2,7 +2,7 @@
 import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import mobiscroll from '@mobiscroll/javascript'
-import {SurportFamilyYMD} from "@/store/state";
+import { SurportFamilyYMD } from '@/store/state'
 
 const store = useStore()
 const surportFamily = computed(() : number[] => store.state.surportFamily.split(' ').map((n: string | number) => +n))
@@ -45,7 +45,7 @@ onMounted(() => {
         <li>
           부모님
           <ul>
-            <li>기혼
+            <li>기혼&middot;예비부부
               <ul>
                 <li>자녀 0명
                 </li>
@@ -69,14 +69,13 @@ onMounted(() => {
                 <li>자녀 5명</li>
               </ul>
             </li>
-            <li>예비부부</li>
             <li>미혼</li>
           </ul>
         </li>
         <li>
           어머님
           <ul>
-            <li>기혼
+            <li>기혼&middot;예비부부
               <ul>
                 <li>자녀 0명
                 </li>
@@ -100,14 +99,13 @@ onMounted(() => {
                 <li>자녀 5명</li>
               </ul>
             </li>
-            <li>예비부부</li>
             <li>미혼</li>
           </ul>
         </li>
         <li>
           아버님
           <ul>
-            <li>기혼
+            <li>기혼&middot;예비부부
               <ul>
                 <li>자녀 0명
                 </li>
@@ -131,14 +129,13 @@ onMounted(() => {
                 <li>자녀 5명</li>
               </ul>
             </li>
-            <li>예비부부</li>
             <li>미혼</li>
           </ul>
         </li>
         <li>
           미부양
           <ul>
-            <li>기혼
+            <li>기혼&middot;예비부부
               <ul>
                 <li>자녀 0명
                 </li>
@@ -162,7 +159,6 @@ onMounted(() => {
                 <li>자녀 5명</li>
               </ul>
             </li>
-            <li>예비부부</li>
             <li>미혼</li>
           </ul>
         </li>

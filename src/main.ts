@@ -6,6 +6,7 @@ import store from '@/store'
 import '@/assets/css/style.scss'
 import mobiscroll from '@mobiscroll/javascript'
 import '@mobiscroll/javascript/dist/css/mobiscroll.min.css'
+import 'material-icons/iconfont/material-icons.css'
 
 mobiscroll.settings = {
   theme: 'ios',

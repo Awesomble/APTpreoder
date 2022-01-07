@@ -2,7 +2,9 @@
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import dayjs from 'dayjs'
-import {UnAdultCnt, InfantCnt, TransferDays} from '@/shared/utils'
+import {
+  UnAdultCnt, InfantCnt, TransferDays, WeddingDays, YoungestDays,
+} from '@/shared/utils'
 import { SurportFamilyYMD } from '@/store/state'
 
 const noticeDt = dayjs('2021.12.29')
@@ -10,6 +12,7 @@ const store = useStore()
 const surportFamilyYMD = computed(() : SurportFamilyYMD => store.state.surportFamilyYMD)
 const surportFamily = computed(() : number[] => store.state.surportFamily.split(' ').map((n: string | number) => +n))
 const familyChildrenCnt = computed(() : number => store.getters.familyChildrenCnt)
+const familyChildrenYMD = computed(() : dayjs.ConfigType[] => store.getters.familyChildrenYMD)
 const familyCnt = computed(() : SurportFamilyYMD => store.getters.FamilyCnt)
 const surportType = computed(() : string => store.state.surportType)
 const surportHomeLessYMD = computed(() : number => Number(store.state.surportHomeLessYMD))
@@ -26,22 +29,57 @@ const score3 = ref<number>(0) // 생이최초
 const score4 = ref<number>(0) // 일반
 const score1First = ref<boolean>(false) // 신혼.한부모
 const score2First = ref<boolean>(false) // 다자녀
-const score3First = ref<boolean>(false) // 생이최초
+const score3First = ref<boolean>(false) // 생애최초
 const score4First = ref<boolean>(false) // 일반
+const score1Ranking = ref<number>(0) // 신혼.한부모 랭킹
+const score2Ranking = ref<number>(0) // 다자녀
+const score3Ranking = ref<number>(0) // 생애최초
+const score4Ranking = ref<number>(0) // 일반
 const unAdultCnt : number = UnAdultCnt(surportFamilyYMD.value, noticeDt)
 const infantCnt : number = InfantCnt(surportFamilyYMD.value, noticeDt)
 const transferDays : number = TransferDays(surportAreaYMD.value, noticeDt)
+const weddingDays : number = WeddingDays(surportAreaYMD.value, noticeDt)
+const youngestDays : number = YoungestDays(familyChildrenYMD.value, noticeDt)
 // 기본 자격체크
 // 주택유무
 
-// ❤️신혼.한부모
 // 소득확인
-if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= 120) score1First.value = true
-if (!surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= 100) score1First.value = true
-if (surportIncomeMy.value && !surportIncomeSpouse.value && myAverage.value <= 100) score1First.value = true
-if (surportIncomeMy.value && !surportIncomeSpouse.value && myAverage.value > 130) score1.value = 0
-if (!surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 130) score1.value = 0
-if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 140) score1.value = 0
+// if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= 120) score1First.value = true
+// if (!surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= 100) score1First.value = true
+// if (surportIncomeMy.value && !surportIncomeSpouse.value && myAverage.value <= 100) score1First.value = true
+// if (surportIncomeMy.value && !surportIncomeSpouse.value && myAverage.value > 130) score1.value = 0
+// if (!surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 130) score1.value = 0
+// if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 140) score1.value = 0
+
+// ❤️신혼.한부모
+// +가구소득
+if (surportIncomeMy.value && !surportIncomeSpouse.value && myAverage.value >= 80) score1.value += 1
+if (!surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value >= 80) score1.value += 1
+if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value >= 100) score1.value += 1
+// +미성년자녀수
+if (unAdultCnt >= 3) score1.value += 3
+else if (unAdultCnt === 2) score1.value += 2
+else if (unAdultCnt === 1) score1.value += 1
+// +해당시도거주기간
+if (transferDays >= 1095) score1.value += 3
+else if (transferDays >= 365) score1.value += 2
+else score1.value += 1
+// +입주자저축 기입기간
+if (surportBank.value[0] >= 24) score1.value += 3
+else if (surportBank.value[0] >= 12) score1.value += 2
+else if (surportBank.value[0] >= 6) score1.value += 1
+// +혼인기간.한부모
+if (surportFamily.value[1] === 0) {
+  if (weddingDays <= 1095) score1.value += 3
+  else if (weddingDays <= 1825) score1.value += 2
+  else if (weddingDays <= 2555) score1.value += 1
+} else if (surportFamily.value[1] === 1) {
+  if (youngestDays <= 730) score1.value += 3
+  else if (youngestDays <= 1460) score1.value += 2
+  else if (youngestDays <= 2190) score1.value += 1
+}
+// 우선공급
+// 부적격
 
 // ❤️다자녀
 // +미성년자녀수
@@ -85,28 +123,39 @@ if (myAverage.value > 130) score1.value = 0
   <li>
     <table class="aptTable">
       <colgroup>
-        <col style="width:auto">
-        <col style="width:20%;">
-        <col style="width:19%;">
-        <col style="width:19%;">
-        <col style="width:19%;">
+        <col style="width:20%">
+        <col style="width:25%;">
+        <col style="width:15%;">
+        <col style="width:auto;">
       </colgroup>
       <tbody>
-        <tr class="tit">
-          <td rowspan="2" class="thubm" style="background-color: #3f97f6;">
-            <span class="sticker" style="background-color: #00ad9d;">남양주 왕숙</span>
+        <tr class="type">
+          <td rowspan="6" class="thubm" style="background-color: #3f97f6;">
             B1
           </td>
-          <td>신혼·한부모</td>
-          <td>다자녀</td>
-          <td>생애최초</td>
-          <td>일반</td>
+        </tr>
+        <tr class="tit">
+          <td colspan="3">경기도 낭양주 왕숙</td>
         </tr>
         <tr class="score">
-          <td><span v-if="!score1">부적격</span><em v-else>{{ score1 }}</em></td>
-          <td><span v-if="!score2">부적격</span><em v-else>{{ score2 }}</em></td>
-          <td><span v-if="!score3">부적격</span><em v-else>{{ score3 }}</em></td>
-          <td><span v-if="!score4">부적격</span><em v-else>{{ score4 }}</em></td>
+          <td>신혼·한부모</td>
+          <td><span v-if="!score1" class="error">부적격</span><em v-else class="score">{{ score1 }}</em></td>
+          <td><span class="ranking">1순위</span><span class="area">당해</span><span class="first">우선공급</span></td>
+        </tr>
+        <tr class="score">
+          <td>다자녀</td>
+          <td><span v-if="!score2" class="error">부적격</span><em v-else class="score">{{ score2 }}</em></td>
+          <td><span class="ranking">1순위</span><span class="area">당해</span><span class="first">우선공급</span></td>
+        </tr>
+        <tr class="score">
+          <td>생애최초</td>
+          <td><span v-if="!score3" class="error">부적격</span><em v-else class="score">{{ score3 }}</em></td>
+          <td><span class="ranking">1순위</span><span class="area">당해</span><span class="first">우선공급</span></td>
+        </tr>
+        <tr class="score">
+          <td>일반</td>
+          <td><span v-if="!score4" class="error">부적격</span><em v-else class="score">{{ score4 }}</em></td>
+          <td><span class="ranking">1순위</span><span class="area">당해</span><span class="first">우선공급</span></td>
         </tr>
       </tbody>
     </table>

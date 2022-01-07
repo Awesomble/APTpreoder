@@ -1,6 +1,7 @@
 import {
   createRouter, createWebHistory, Router, RouteRecordRaw,
 } from 'vue-router'
+import store from '@/store'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,6 +23,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/supportFamilyYMD',
     name: 'supportFamilyYMD',
     component: () => import('@/page/userData/SupportFamilyYMD.vue'),
+  },
+  {
+    path: '/supportWeddingYMD',
+    name: 'supportWeddingYMD',
+    component: () => import('@/page/userData/SupportWeddingYMD.vue'),
   },
   {
     path: '/supportArea',
@@ -59,5 +65,8 @@ const router: Router = createRouter({
   history: createWebHistory(),
   routes,
 })
-
+router.beforeResolve(async (to) => {
+  console.log(to)
+  store.dispatch('setNavi', false)
+})
 export default router

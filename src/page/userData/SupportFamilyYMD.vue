@@ -9,6 +9,7 @@ import { SurportFamilyYMD } from '@/store/state'
 const store = useStore()
 const router = useRouter()
 const surportFamilyYMD = computed(() : SurportFamilyYMD => store.state.surportFamilyYMD)
+const surportFamily = computed(() : number[] => store.state.surportFamily.split(' ').map((n: string | number) => +n))
 const iptFamily = computed(() : string => store.state.surportFamily.split(' '))
 const userFamilyYMD : SurportFamilyYMD = {
   parent1: surportFamilyYMD.value.parent1,
@@ -63,7 +64,8 @@ const btnNext = () : void => {
     }
   }
   store.dispatch('setSurportFamilyYMD', userFamilyYMD)
-  router.push({ name: 'supportArea' })
+  if (surportFamily.value[1] === 0) router.push({ name: 'supportWeddingYMD' })
+  else router.push({ name: 'supportArea' })
 }
 const date1960 = new Date(1960, 0, 1)
 const date1980 = new Date(1970, 0, 1)

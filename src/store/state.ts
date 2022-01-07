@@ -11,11 +11,13 @@ export interface SurportFamilyYMD {
 }
 
 export interface State {
+  navi: boolean;
   average: any;
   surportIncomeSpouse: number,
   surportType: string;
   surportFamily: string;
   surportFamilyYMD: SurportFamilyYMD
+  surportWeddingYMD: string;
   surportArea: string;
   surportAreaYMD: string;
   surportHomeLessYMD: string;
@@ -25,6 +27,7 @@ export interface State {
 
 export function state() {
   return {
+    navi: false,
     surportType: localStorage.surportType || '0',
     surportFamily: localStorage.surportFamily || '0 0 0',
     surportFamilyYMD: {
@@ -38,6 +41,7 @@ export function state() {
       children4: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).children4 : '',
       children5: localStorage.surportFamilyYMD ? JSON.parse(localStorage.surportFamilyYMD).children5 : '',
     },
+    surportWeddingYMD: localStorage.surportWeddingYMD || '',
     surportArea: localStorage.surportArea || '0 0',
     surportAreaYMD: localStorage.surportAreaYMD || '',
     surportHomeLessYMD: localStorage.surportHomeLessYMD || '',

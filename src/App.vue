@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { defineComponent } from 'vue'
 import HeaderArea from '@/components/common/Header.vue'
 </script>
 
 <template>
-  <header-area v-if="false"/>
+  <header-area v-if="$route.name !== 'Home'" />
   <router-view />
 </template>
 

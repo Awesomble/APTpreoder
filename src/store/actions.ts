@@ -6,10 +6,14 @@ import {
   SET_SURPORT_FAMILY,
   SET_SURPORT_INCOME,
   SET_SURPORT_AREA, SET_SURPORT_AREA_YMD,
-  SET_SURPORT_HOMELESS_YMD, SET_SURPORT_BANK,
+  SET_SURPORT_HOMELESS_YMD, SET_SURPORT_BANK, SET_SURPORT_WEDDING_YMD, SET_NAVI,
 } from './types'
 
 export default {
+  setNavi({ commit }: ActionContext<State, State>, payload: boolean) {
+    console.log(payload)
+    commit(SET_NAVI, payload)
+  },
   setSurportType({ commit }: ActionContext<State, State>, payload: string) {
     commit(SET_SURPORT_TYPE, payload)
   },
@@ -18,6 +22,9 @@ export default {
   },
   setSurportFamilyYMD({ commit }: ActionContext<State, State>, payload: SurportFamilyYMD) {
     commit(SET_SURPORT_FAMILY_YMD, payload)
+  },
+  setSurportWeddingYMD({ commit }: ActionContext<State, State>, payload: string) {
+    commit(SET_SURPORT_WEDDING_YMD, payload)
   },
   setSurportArea({ commit }: ActionContext<State, State>, payload: string) {
     commit(SET_SURPORT_AREA, payload)

@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { State } from './state'
 
 export default {
@@ -22,6 +23,16 @@ export default {
     const f = state.surportFamily.split(' ')
     console.log('아이들수 : ', Number(f[2]))
     return Number(f[2])
+  },
+  familyChildrenYMD(state: State) : dayjs.ConfigType[] {
+    const a : dayjs.ConfigType[] = []
+    if (state.surportFamilyYMD.children1) a.push(dayjs(state.surportFamilyYMD.children1))
+    if (state.surportFamilyYMD.children2) a.push(dayjs(state.surportFamilyYMD.children2))
+    if (state.surportFamilyYMD.children3) a.push(dayjs(state.surportFamilyYMD.children3))
+    if (state.surportFamilyYMD.children4) a.push(dayjs(state.surportFamilyYMD.children4))
+    if (state.surportFamilyYMD.children5) a.push(dayjs(state.surportFamilyYMD.children5))
+    console.log('아이들YMD : ', a)
+    return a
   },
   surportType(state: State) : string {
     if (state.surportType === '0') return '신혼부부·한부모'
