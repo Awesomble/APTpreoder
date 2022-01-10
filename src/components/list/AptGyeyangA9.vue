@@ -108,9 +108,9 @@ if (surportArea.value[0] === 2) {
       <tbody>
       <tr class="type">
         <td class="thubm" style="background-color: #3f97f6;">
-          A2
+          A9
         </td>
-        <td colspan="2" class="tit">경기도 왕숙(신희타)</td>
+        <td colspan="2" class="tit">인천 계양(신희타)</td>
       </tr>
       <tr class="score">
         <td>우선</td>

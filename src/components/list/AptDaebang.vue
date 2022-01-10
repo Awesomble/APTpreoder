@@ -111,7 +111,7 @@ if (surportArea.value[0] === 0) {
         <td class="thubm" style="background-color: #BA5BF5;">
           A2
         </td>
-        <td colspan="2" class="tit">경기도 남양주 왕숙(신희타)</td>
+        <td colspan="2" class="tit">서울 대방(신희타)</td>
       </tr>
       <tr class="score">
         <td>우선</td>

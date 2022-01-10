@@ -21,6 +21,8 @@ import AptAnsanA136 from '@/components/list/AptAnsanA136.vue'
 import AptSeongnamA4 from '@/components/list/AptSeongnamA4.vue'
 import AptDaejangA5 from '@/components/list/AptDaejangA5.vue'
 import AptDaebang from '@/components/list/AptDaebang.vue'
+import AptGyeyangA9 from '@/components/list/AptGyeyangA9.vue'
+import AptGuliA1 from '@/components/list/AptGuliA1.vue'
 </script>
 
 <template>
@@ -49,7 +51,9 @@ import AptDaebang from '@/components/list/AptDaebang.vue'
       <apt-ansan-a1 />
       <apt-ansan-a136 />
       <apt-seongnam-a4 />
+      <apt-gyeyang-a9 />
       <apt-daebang />
+      <apt-guli-a1 />
     </ul>
   </div>
 </template>

@@ -79,7 +79,7 @@ if (surportArea.value[0] !== 1) score1.value = 0 // 경기도이외 부적격
 if (surportIncomeMy.value && !surportIncomeSpouse.value && myAverage.value > 130) score1.value = 0
 if (!surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 130) score1.value = 0
 if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 140) score1.value = 0
-
+console.log('===', surportArea.value[0])
 // 부적격
 if (surportBank.value[0] < 6) score2.value = 0 // 청약 6회이상
 if (weddingDays > 2555 && youngestDays > 2190) score2.value = 0 // 청약 6회이상
@@ -108,7 +108,7 @@ if (surportArea.value[0] === 1 && surportArea.value[1] === 30) {
       </colgroup>
       <tbody>
       <tr class="type">
-        <td class="thubm" style="background-color: #F5C773;">
+        <td class="thubm" style="background-color: #F58373;">
           A1
         </td>
         <td colspan="2" class="tit">경기도 구리 갈매(신희타)</td>

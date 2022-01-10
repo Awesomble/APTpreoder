@@ -34,9 +34,9 @@ const setNavigation = (b: boolean) => {
           </router-link>
         </li>
         <li>
-          <router-link to="/about">
+          <a href="https://aosdin.notion.site/b0cc3c4d13bf409c90ebab523daeb92c" target="_blank">
             <span>문의하기</span>
-          </router-link>
+          </a>
         </li>
       </ul>
     </nav>
