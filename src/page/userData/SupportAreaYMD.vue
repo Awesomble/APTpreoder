@@ -28,6 +28,11 @@ onMounted(() => {
       </dt>
       <dd>
         <input type="text" id="supportAreaYMD" v-show="false">
+        <div class="ps">
+          <ul>
+            <li><em>신희타</em>는 경기도, 서울, 인천등 최초 전입일을 입력 해야 합니다.</li>
+          </ul>
+        </div>
       </dd>
     </dl>
   </div>

@@ -245,7 +245,7 @@ dl {
       font-size: 1rem!important;
       text-align: right;
       border: none;
-      border-bottom: 1px solid #e25c66;
+      border-bottom: 1px solid #ccc;
       outline: none;
     }
   }

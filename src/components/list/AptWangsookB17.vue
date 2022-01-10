@@ -33,14 +33,14 @@ const score1Area = ref<boolean>(false) // 신혼.한부모
 const score2Area = ref<boolean>(false) // 다자녀
 const score3Area = ref<boolean>(false) // 생애최초
 const score4Area = ref<boolean>(false) // 일반
-const score1Ranking1 = ref<number>(0) // 신혼.한부모 랭킹
-const score2Ranking1 = ref<number>(0) // 다자녀
-const score3Ranking1 = ref<number>(0) // 생애최초
-const score4Ranking1 = ref<number>(0) // 일반
-const score1Ranking2 = ref<number>(0) // 신혼.한부모 랭킹
-const score2Ranking2 = ref<number>(0) // 다자녀
-const score3Ranking2 = ref<number>(0) // 생애최초
-const score4Ranking2 = ref<number>(0) // 일반
+const score1Ranking1 = ref<boolean>(false) // 신혼.한부모 랭킹
+const score2Ranking1 = ref<boolean>(false) // 다자녀
+const score3Ranking1 = ref<boolean>(false) // 생애최초
+const score4Ranking1 = ref<boolean>(false) // 일반
+const score1Ranking2 = ref<boolean>(false) // 신혼.한부모 랭킹
+const score2Ranking2 = ref<boolean>(false) // 다자녀
+const score3Ranking2 = ref<boolean>(false) // 생애최초
+const score4Ranking2 = ref<boolean>(false) // 일반
 const unAdultCnt : number = UnAdultCnt(surportFamilyYMD.value, noticeDt)
 const infantCnt : number = InfantCnt(surportFamilyYMD.value, noticeDt)
 const transferDays : number = TransferDays(surportAreaYMD.value, noticeDt)
@@ -85,6 +85,7 @@ if (surportIncomeMy.value && !surportIncomeSpouse.value && myAverage.value <= 10
 if (!surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= 100) score1First.value = true
 if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= 120) score1First.value = true
 // 부적격
+if (surportBank.value[0] < 6) score1.value = 0 // 청약 6회이상
 if (surportIncomeMy.value && !surportIncomeSpouse.value && myAverage.value > 130) score1.value = 0
 if (!surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 130) score1.value = 0
 if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 140) score1.value = 0
@@ -117,13 +118,16 @@ if (unAdultCnt < 3) score2.value = 0 // 3자녕 이상만가능
 if (myAverage.value > 120) score2.value = 0 // 소득 120%만 가능
 
 // ❤️생애최초
-if (surportBank.value[1] < 6000000) score3.value = 0 // 600만원 이하는 부적격
+if (surportBank.value[0] < 24 || surportBank.value[1] < 6000000) score3.value = 0 // 600만원 이하는 부적격
 if (myAverage.value <= 100) score3First.value = true
 // 부적격
 if (surportFamily.value[1] === 2) score3.value = 0
 if (myAverage.value > 130) score3.value = 0
 
 // ❤️일반
+if (surportBank.value[0] < 24) {
+  score4.value = 0
+}
 if (surportBank.value[0] >= 24) score4Ranking1.value = true
 else score4Ranking2.value = true
 
@@ -131,13 +135,9 @@ else score4Ranking2.value = true
 if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
   if (dayjs(noticeDt).diff(dayjs(surportAreaYMD.value), 'day') >= 365) {
     score1Area.value = true
+    score2Area.value = true
     score3Area.value = true
     score4Area.value = true
-  }
-}
-if (surportArea.value[0] === 1) {
-  if (dayjs(noticeDt).diff(dayjs(surportAreaYMD.value), 'day') >= 365) {
-    score2Area.value = true
   }
 }
 
@@ -198,7 +198,7 @@ if (surportArea.value[0] === 1) {
       <tr class="score">
         <td>일반</td>
         <td>
-          {{ (surportBank[1]/10000).toLocaleString()}}만
+          <em>{{ (surportBank[1]/10000).toLocaleString()}}만</em>
         </td>
         <td class="opt">
           <span class="ranking1" v-if="score4Ranking1">1순위</span>

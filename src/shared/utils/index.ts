@@ -45,7 +45,7 @@ export function WeddingDays(surportWeddingYMD: string, noticeDt: dayjs.ConfigTyp
 export function YoungestDays(ymb: dayjs.ConfigType[], noticeDt: dayjs.ConfigType) : number {
   if (!ymb || !ymb.length) return 0
   // @ts-ignore
-  const y : dayjs.ConfigType = dayjs.min(ymb)
+  const y : dayjs.ConfigType = dayjs.max(ymb)
   const cnt : number = dayjs(noticeDt).diff(y, 'day')
   console.log('최연소자Day : ', cnt)
   return cnt

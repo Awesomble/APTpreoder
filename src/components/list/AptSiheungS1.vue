@@ -24,8 +24,8 @@ const surportBank = computed(() : number[] => store.state.surportBank.split(' ')
 const score1 = ref<number>(0) // 신혼.한부모
 const score2 = ref<number>(0) // 다자녀
 const score3 = ref<number>(0) // 생이최초
-const score4 = ref<number>(1) // 일반
-const score5 = ref<number>(1) // 일반
+const score4 = ref<number>(0) // 일반
+const score5 = ref<number>(0) // 일반
 const score1First = ref<boolean>(false) // 신혼.한부모
 const score2First = ref<boolean>(false) // 다자녀
 const score3First = ref<boolean>(false) // 생애최초
@@ -135,7 +135,7 @@ if (surportBank.value[0] >= 24) score4Ranking1.value = true
 else score4Ranking2.value = true
 
 // 당해
-if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
+if (surportArea.value[0] === 1 && surportArea.value[1] === 17) {
   if (dayjs(noticeDt).diff(dayjs(surportAreaYMD.value), 'day') >= 365) {
     score1Area.value = true
     score2Area.value = true
@@ -155,75 +155,74 @@ if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
         <col style="width:auto;">
       </colgroup>
       <tbody>
-      <tr class="type">
-        <td class="thubm" style="background-color: #3f97f6;">
-          A1
-        </td>
-        <td colspan="2" class="tit">경기도 낭양주 왕숙</td>
-      </tr>
-      <tr class="score">
-        <td>신혼·한부모</td>
-        <td>
-          <span v-if="!score1" class="error">부적격</span>
-          <em v-else class="score">{{ score1 }}</em>
-        </td>
-        <td class="opt">
-          <span class="ranking1" v-if="score1Ranking1">1순위</span>
-          <span class="ranking2" v-if="score1Ranking2">2순위</span>
-          <span class="area" v-if="score1Area">당해</span>
-          <span class="first" v-if="score1First">우선공급</span>
-        </td>
-      </tr>
-      <tr class="score">
-        <td>다자녀</td>
-        <td>
-          <span v-if="!score2" class="error">부적격</span>
-          <em v-else class="score">{{ score1 }}</em>
-        </td>
-        <td class="opt">
-          <span class="ranking1" v-if="score2Ranking1">1순위</span>
-          <span class="ranking2" v-if="score2Ranking2">2순위</span>
-          <span class="area" v-if="score2Area">당해</span>
-          <span class="first" v-if="score2First">우선공급</span>
-        </td>
-      </tr>
-      <tr class="score">
-        <td>생애최초</td>
-        <td>
-        </td>
-        <td class="opt">
-          <span class="ranking1" v-if="score3Ranking1">1순위</span>
-          <span class="ranking2" v-if="score3Ranking2">2순위</span>
-          <span class="area" v-if="score3Area">당해</span>
-          <span class="first" v-if="score3First">우선공급</span>
-        </td>
-      </tr>
-      <tr class="score">
-        <td>일반</td>
-        <td>
-          <span v-if="!score4" class="error">부적격</span>
-          <em v-else>{{ (surportBank[1]/10000).toLocaleString()}}만</em>
-        </td>
-        <td class="opt">
-          <span class="ranking1" v-if="score4Ranking1">1순위</span>
-          <span class="ranking2" v-if="score4Ranking2">2순위</span>
-          <span class="area" v-if="score4Area">당해</span>
-          <span class="first" v-if="score4First">우선공급</span>
-        </td>
-      </tr>
-      <tr class="score">
-        <td>일반(60㎡이하)</td>
-        <td>
-          <span v-if="!score5" class="error">부적격</span>
-          <em v-else>{{ (surportBank[1]/10000).toLocaleString()}}만</em>
-        </td>
-        <td class="opt">
-          <span class="ranking1" v-if="score4Ranking1">1순위</span>
-          <span class="ranking2" v-if="score4Ranking2">2순위</span>
-          <span class="area" v-if="score4Area">당해</span>
-          <span class="first" v-if="score4First">우선공급</span>
-        </td>
-      </tr>
+        <tr class="type">
+          <td class="thubm" style="background-color: #DB7251;">
+            S1
+          </td>
+          <td colspan="2" class="tit">경기도 시흥 거모</td>
+        </tr>
+        <tr class="score">
+          <td>신혼·한부모</td>
+          <td>
+            <span v-if="!score1" class="error">부적격</span>
+            <em v-else class="score">{{ score1 }}</em>
+          </td>
+          <td class="opt">
+            <span class="ranking1" v-if="score1Ranking1">1순위</span>
+            <span class="ranking2" v-if="score1Ranking2">2순위</span>
+            <span class="area" v-if="score1Area">당해</span>
+            <span class="first" v-if="score1First">우선공급</span>
+          </td>
+        </tr>
+        <tr class="score">
+          <td>다자녀</td>
+          <td>
+            <span v-if="!score2" class="error">부적격</span>
+            <em v-else class="score">{{ score1 }}</em>
+          </td>
+          <td class="opt">
+            <span class="ranking1" v-if="score2Ranking1">1순위</span>
+            <span class="ranking2" v-if="score2Ranking2">2순위</span>
+            <span class="area" v-if="score2Area">당해</span>
+            <span class="first" v-if="score2First">우선공급</span>
+          </td>
+        </tr>
+        <tr class="score">
+          <td>생애최초</td>
+          <td>
+          </td>
+          <td class="opt">
+            <span class="ranking1" v-if="score3Ranking1">1순위</span>
+            <span class="ranking2" v-if="score3Ranking2">2순위</span>
+            <span class="area" v-if="score3Area">당해</span>
+            <span class="first" v-if="score3First">우선공급</span>
+          </td>
+        </tr>
+        <tr class="score">
+          <td>일반</td>
+          <td>
+            <em>{{ (surportBank[1]/10000).toLocaleString()}}만</em>
+          </td>
+          <td class="opt">
+            <span class="ranking1" v-if="score4Ranking1">1순위</span>
+            <span class="ranking2" v-if="score4Ranking2">2순위</span>
+            <span class="area" v-if="score4Area">당해</span>
+            <span class="first" v-if="score4First">우선공급</span>
+          </td>
+        </tr>
+        <tr class="score">
+          <td>일반(60㎡이하)</td>
+          <td>
+            <span v-if="!score5" class="error">부적격</span>
+            <em v-else>{{ (surportBank[1]/10000).toLocaleString()}}만</em>
+          </td>
+          <td class="opt">
+            <span class="ranking1" v-if="score4Ranking1">1순위</span>
+            <span class="ranking2" v-if="score4Ranking2">2순위</span>
+            <span class="area" v-if="score4Area">당해</span>
+            <span class="first" v-if="score4First">우선공급</span>
+          </td>
+        </tr>
       </tbody>
     </table>
   </li>

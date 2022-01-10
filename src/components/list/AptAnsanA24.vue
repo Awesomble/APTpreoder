@@ -135,8 +135,8 @@ if (surportBank.value[0] >= 24) score4Ranking1.value = true
 else score4Ranking2.value = true
 
 // 당해
-if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
-  if (dayjs(noticeDt).diff(dayjs(surportAreaYMD.value), 'day') >= 365) {
+if (surportArea.value[0] === 1 && surportArea.value[1] === 14) {
+  if (dayjs(noticeDt).diff(dayjs(surportAreaYMD.value), 'day') >= 730) {
     score1Area.value = true
     score2Area.value = true
     score3Area.value = true
@@ -156,10 +156,10 @@ if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
       </colgroup>
       <tbody>
       <tr class="type">
-        <td class="thubm" style="background-color: #3f97f6;">
-          A1
+        <td class="thubm" style="background-color: #F8C25C;">
+          A2,4
         </td>
-        <td colspan="2" class="tit">경기도 낭양주 왕숙</td>
+        <td colspan="2" class="tit">경기도 안산 신길2</td>
       </tr>
       <tr class="score">
         <td>신혼·한부모</td>
@@ -196,19 +196,6 @@ if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
           <span class="ranking2" v-if="score3Ranking2">2순위</span>
           <span class="area" v-if="score3Area">당해</span>
           <span class="first" v-if="score3First">우선공급</span>
-        </td>
-      </tr>
-      <tr class="score">
-        <td>일반</td>
-        <td>
-          <span v-if="!score4" class="error">부적격</span>
-          <em v-else>{{ (surportBank[1]/10000).toLocaleString()}}만</em>
-        </td>
-        <td class="opt">
-          <span class="ranking1" v-if="score4Ranking1">1순위</span>
-          <span class="ranking2" v-if="score4Ranking2">2순위</span>
-          <span class="area" v-if="score4Area">당해</span>
-          <span class="first" v-if="score4First">우선공급</span>
         </td>
       </tr>
       <tr class="score">
