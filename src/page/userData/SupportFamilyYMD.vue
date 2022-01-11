@@ -37,7 +37,7 @@ const btnNext = () : void => {
     alert('신청자 정보를 입력하세요.')
     return
   }
-  if ((iptFamily.value[1] === '0' || iptFamily.value[1] === '2') && !userFamilyYMD.spouse) {
+  if ((iptFamily.value[1] === '0') && !userFamilyYMD.spouse) {
     alert('배우자 정보를 입력하세요.')
     return
   }
@@ -182,7 +182,7 @@ onMounted(() => {
           <input id="my" type="tel" placeholder="YYYY"
                  :value="surportFamilyYMD.my">
         </label>
-        <label for="spouse" v-if="iptFamily[1] === '0' || iptFamily[1] === '2'">
+        <label for="spouse" v-if="iptFamily[1] === '0'">
           배우자 :
           <input id="spouse" type="tel" placeholder="YYYY"
                  :value="surportFamilyYMD.spouse">
