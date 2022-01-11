@@ -162,7 +162,7 @@ if (surportArea.value[0] === 1 && surportArea.value[1] === 14) {
           <td>신혼·한부모</td>
           <td>
             <span v-if="!score1" class="error">부적격</span>
-            <em v-else class="score">{{ score1 }}</em>
+            <em v-else class="score">{{ score2 }}</em>
           </td>
           <td class="opt">
             <span class="ranking1" v-if="score1Ranking1">1순위</span>

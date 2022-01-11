@@ -65,7 +65,8 @@ import AptGuliA1 from '@/components/list/AptGuliA1.vue'
         areaPriority: {
           area: [1, 1],
           areaTermDays: 365
-        }
+        },
+        ineligible: {}
       }" />
       <apt-wangsook-b17 />
       <apt-wangsook-a1 />

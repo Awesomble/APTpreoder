@@ -103,6 +103,7 @@ if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value > 140)
 
 // ❤️다자녀
 // +미성년자녀수
+console.log('unAdultCnt=', unAdultCnt)
 if (unAdultCnt >= 5) score2.value += 40
 else if (unAdultCnt === 4) score2.value += 35
 else if (unAdultCnt === 3) score2.value += 30
@@ -172,8 +173,8 @@ if (isNull(D.areaPriority.area[1]) || D.areaPriority.area[0] === surportArea.val
           </td>
           <td colspan="2" class="tit">{{ D.aptInfo.title }}</td>
         </tr>
-        <tr class="score">
-          <td>신혼·한부모</td>
+        <tr class="score" v-if="D.disType.row.honeymoon || D.disType.row.singleParent">
+          <td>{{ D.disType.row.honeymoon ? '신혼' : ''}}신혼·한부모</td>
           <td>
             <span v-if="!score1" class="error">부적격</span>
             <em v-else class="score">{{ score1 }}</em>
@@ -189,7 +190,7 @@ if (isNull(D.areaPriority.area[1]) || D.areaPriority.area[0] === surportArea.val
           <td>다자녀</td>
           <td>
             <span v-if="!score2" class="error">부적격</span>
-            <em v-else class="score">{{ score1 }}</em>
+            <em v-else class="score">{{ score2 }}</em>
           </td>
           <td class="opt">
             <span class="ranking1" v-if="score2Ranking1">1순위</span>

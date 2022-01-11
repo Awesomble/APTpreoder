@@ -178,7 +178,7 @@ if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
         <td>다자녀</td>
         <td>
           <span v-if="!score2" class="error">부적격</span>
-          <em v-else class="score">{{ score1 }}</em>
+          <em v-else class="score">{{ score2 }}</em>
         </td>
         <td class="opt">
           <span class="ranking1" v-if="score2Ranking1">1순위</span>

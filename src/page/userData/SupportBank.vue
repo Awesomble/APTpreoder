@@ -8,7 +8,7 @@ const surportBank = computed(() : number[] => store.state.surportBank.split(' ')
 const cntValues: any[] = []
 const amountValues: any[] = []
 
-for (let i = 0; i <= 100; i += 1) {
+for (let i = 0; i <= 180; i += 1) {
   cntValues.push({
     display: i,
     value: i,
