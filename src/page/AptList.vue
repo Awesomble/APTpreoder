@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
 import AptWangsookB1 from '@/components/list/AptWangsookB1.vue'
 import AptWangsookB17 from '@/components/list/AptWangsookB17.vue'
 import AptWangsookA1 from '@/components/list/AptWangsookA1.vue'
@@ -23,6 +24,68 @@ import AptDaejangA5 from '@/components/list/AptDaejangA5.vue'
 import AptDaebang from '@/components/list/AptDaebang.vue'
 import AptGyeyangA9 from '@/components/list/AptGyeyangA9.vue'
 import AptGuliA1 from '@/components/list/AptGuliA1.vue'
+import AptType01 from '@/components/list/AptType01.vue'
+
+const list = reactive<{ [key: string]: any }>([
+  {
+    noticeDt: '2021.12.29',
+    disType: {
+      type: 'as4',
+      subType: '',
+      row: {
+        honeymoon: true,
+        singleParent: true,
+        multiChildren: true,
+        firstLife: true,
+        normal: true,
+        normalUnde60: false,
+      },
+    },
+    rule: {
+      honeymoon: {
+        score: {
+          income: {
+            dualIncome: {
+              min: null,
+              max: 100,
+              score: 3,
+            },
+            singleIncome: {
+              min: null,
+              max: 80,
+              score: 1,
+            },
+          },
+          unAdultCnt: [],
+        },
+      },
+    },
+    aptInfo: {
+      title: '남양주 왕숙',
+      description: '',
+      type: 'B1',
+      color: {
+        main: '#3f97f6',
+        sub: '#3f97f6',
+      },
+      adress: {
+        sity: {
+          name: '경기도',
+          code: '1',
+        },
+        sigungu: {
+          name: '남양주시',
+          code: '1',
+        },
+      },
+    },
+    areaPriority: {
+      area: [1, 1],
+      areaTermDays: 365,
+    },
+    ineligible: {},
+  },
+])
 </script>
 
 <template>
@@ -30,44 +93,9 @@ import AptGuliA1 from '@/components/list/AptGuliA1.vue'
   </div>
   <div class="aptListWrap">
     <ul class="aptList">
-      <apt-wangsook-b1 :data="{
-        disType: {
-          type: 'as4',
-          subType: '',
-          row: {
-            honeymoon: true,
-            singleParent: true,
-            multiChildren: true,
-            firstLife: true,
-            normal: true,
-            normalUnde60: false,
-          }
-        },
-        aptInfo: {
-          title: '남양주 왕숙',
-          description: '',
-          type: 'B1',
-          color: {
-            main: '#3f97f6',
-            sub: '#3f97f6',
-          },
-          adress: {
-            sity: {
-              name: '경기도',
-              code: '1'
-            },
-            sigungu: {
-              name: '남양주시',
-              code: '1'
-            },
-          },
-        },
-        areaPriority: {
-          area: [1, 1],
-          areaTermDays: 365
-        },
-        ineligible: {}
-      }" />
+      <li v-for="(item, idx) in list" :key="`item${idx}`" >
+        <apt-type01 :data="item" />
+      </li>
       <apt-wangsook-b17 />
       <apt-wangsook-a1 />
       <apt-wangsook-a2 />

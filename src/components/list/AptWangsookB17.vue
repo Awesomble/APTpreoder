@@ -113,6 +113,7 @@ else if (transferDays >= 365) score2.value += 5
 // +입주자저축 기입기간
 if (surportBank.value[0] >= 120) score2.value += 5
 // 부적격
+console.log(surportBank.value[0], unAdultCnt, myAverage.value)
 if (surportBank.value[0] < 6) score2.value = 0 // 청약 6회이상
 if (unAdultCnt < 3) score2.value = 0 // 3자녕 이상만가능
 if (myAverage.value > 120) score2.value = 0 // 소득 120%만 가능

@@ -69,7 +69,7 @@ const btnNext = () : void => {
 }
 const date1960 = new Date(1960, 0, 1)
 const date1980 = new Date(1970, 0, 1)
-const date1990 = new Date(1990, 0, 1)
+const date1990 = new Date(2020, 0, 1)
 
 const mobiOpt1: any = {
   display: 'bottom',
