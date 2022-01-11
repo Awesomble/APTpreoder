@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import {
+  computed, ref, defineProps, reactive,
+} from 'vue'
 import { useStore } from 'vuex'
 import dayjs from 'dayjs'
+import { isNull } from 'lodash'
 import {
   UnAdultCnt, InfantCnt, TransferDays, WeddingDays, YoungestDays,
 } from '@/shared/utils'
@@ -9,6 +12,14 @@ import { SurportFamilyYMD } from '@/store/state'
 
 const noticeDt = dayjs('2021.12.29')
 const store = useStore()
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true,
+  },
+})
+const D = reactive<{ [key: string]: any }>(props.data)
+
 const surportFamilyYMD = computed(() : SurportFamilyYMD => store.state.surportFamilyYMD)
 const surportFamily = computed(() : number[] => store.state.surportFamily.split(' ').map((n: string | number) => +n))
 const familyChildrenCnt = computed(() : number => store.getters.familyChildrenCnt)
@@ -132,12 +143,14 @@ if (surportBank.value[0] >= 24) score4Ranking1.value = true
 else score4Ranking2.value = true
 
 // 당해
-if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
-  if (dayjs(noticeDt).diff(dayjs(surportAreaYMD.value), 'day') >= 365) {
-    score1Area.value = true
-    score2Area.value = true
-    score3Area.value = true
-    score4Area.value = true
+if (isNull(D.areaPriority.area[1]) || D.areaPriority.area[0] === surportArea.value[0]) {
+  if (isNull(D.areaPriority.area[1]) || D.areaPriority.area[1] === surportArea.value[1]) {
+    if (isNull(D.areaPriority.areaTermDays) || dayjs(noticeDt).diff(dayjs(surportAreaYMD.value), 'day') >= D.areaPriority.areaTermDays) {
+      score1Area.value = true
+      score2Area.value = true
+      score3Area.value = true
+      score4Area.value = true
+    }
   }
 }
 
@@ -153,10 +166,11 @@ if (surportArea.value[0] === 1 && surportArea.value[1] === 1) {
       </colgroup>
       <tbody>
         <tr class="type">
-          <td class="thubm" style="background-color: #3f97f6;">
-            B1
+          <td class="thubm"
+              :style="`background-color:${D.aptInfo.color.main};`">
+            {{ D.aptInfo.type }}
           </td>
-          <td colspan="2" class="tit">경기도 낭양주 왕숙</td>
+          <td colspan="2" class="tit">{{ D.aptInfo.title }}</td>
         </tr>
         <tr class="score">
           <td>신혼·한부모</td>

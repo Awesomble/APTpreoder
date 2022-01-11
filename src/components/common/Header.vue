@@ -14,7 +14,7 @@ const setNavigation = (b: boolean) => {
 <template>
   <header>
     <h1 class="logo">
-      <span>어썸블</span> 청약가점 계산기
+      <router-link :to="{ name: 'Home' }"><span>어썸블</span> 청약가점 계산기</router-link>
     </h1>
     <button class="asb-icon-btn" @click="setNavigation(!navi)">
       <span class="material-icons-outlined">

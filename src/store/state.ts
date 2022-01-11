@@ -1,3 +1,23 @@
+export interface valueText {
+  value: any,
+  text: string,
+}
+export interface areaPriority {
+  area: any,
+  areaTermDays: number
+}
+export interface adress {
+  sido: valueText,
+  city: valueText,
+}
+export interface AptData {
+  aptTitle: string,
+  description: string,
+  aptType: string,
+  adress: adress,
+  areaPriority: areaPriority
+}
+
 export interface SurportFamilyYMD {
   parent1: string,
   parent2: string,

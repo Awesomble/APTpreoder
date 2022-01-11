@@ -30,7 +30,43 @@ import AptGuliA1 from '@/components/list/AptGuliA1.vue'
   </div>
   <div class="aptListWrap">
     <ul class="aptList">
-      <apt-wangsook-b1 />
+      <apt-wangsook-b1 :data="{
+        disType: {
+          type: 'as4',
+          subType: '',
+          row: {
+            honeymoon: true,
+            singleParent: true,
+            multiChildren: true,
+            firstLife: true,
+            normal: true,
+            normalUnde60: false,
+          }
+        },
+        aptInfo: {
+          title: '남양주 왕숙',
+          description: '',
+          type: 'B1',
+          color: {
+            main: '#3f97f6',
+            sub: '#3f97f6',
+          },
+          adress: {
+            sity: {
+              name: '경기도',
+              code: '1'
+            },
+            sigungu: {
+              name: '남양주시',
+              code: '1'
+            },
+          },
+        },
+        areaPriority: {
+          area: [1, 1],
+          areaTermDays: 365
+        }
+      }" />
       <apt-wangsook-b17 />
       <apt-wangsook-a1 />
       <apt-wangsook-a2 />
