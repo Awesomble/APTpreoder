@@ -56,7 +56,7 @@ onMounted(() => {
   a {
     margin-top: 10vh;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: bold;
     text-decoration: none;
   }
@@ -64,9 +64,9 @@ onMounted(() => {
     display: block;
     position: fixed;
     bottom: -100px;
-    font-size: 1rem;
+    font-size: 1em;
     border: 2px solid #fff;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5em 1.5em;
     border-radius: 50px;
     &.active {
       bottom: 30px;

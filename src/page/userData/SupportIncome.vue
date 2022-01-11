@@ -81,7 +81,7 @@ onMounted(() => {
  dl {
    dt {}
    dd {
-     font-size: 1rem!important;
+     font-size: 1em!important;
      margin-bottom: 10px;
      label {
        display: flex;
@@ -96,7 +96,7 @@ onMounted(() => {
      input {
        width: 130px;
        line-height: 20px;
-       font-size: 1rem!important;
+       font-size: 1em!important;
        text-align: right;
        border: none;
        border-bottom: 1px solid #e25c66;
