@@ -55,7 +55,7 @@ onMounted(() => {
           신청자 :
           <input id="ipt1" type="tel" :value="surportIncomeMy">
         </label>
-        <label for="ipt2" v-show="iptFamily[1] === '0' || iptFamily[1] === '2'">
+        <label for="ipt2" v-show="iptFamily[1] === '0'">
           맞벌이 :
           <input id="ipt2" type="tel" :value="surportIncomeSpouse">
         </label>
