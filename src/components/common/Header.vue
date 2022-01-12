@@ -33,7 +33,7 @@ const setNavigation = (b: boolean) => {
     <nav :class="{'active': navi}">
       <ul>
         <li>
-          <router-link :to="{ name: 'supportType' }">
+          <router-link :to="{ name: 'supportFamily' }">
             <span>재설정</span>
           </router-link>
         </li>
