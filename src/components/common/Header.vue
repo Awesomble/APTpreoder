@@ -50,9 +50,7 @@ const setNavigation = (b: boolean) => {
 <style scoped lang="scss">
   header {
     position: fixed;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
     top: 0;
     left: 0;
     width: 100%;
@@ -61,19 +59,22 @@ const setNavigation = (b: boolean) => {
     border-bottom: 1px solid #dadce0;
     transition: border .25s;
     color: #5f6368;
-    padding: 4px;
-    padding-left: 10px;
-    min-width: 0;
+    padding: 14px 4px;
     z-index: 9;
     h1 {
       font-size: 22px;
       font-weight: 400;
+      text-align: center;
       span {
         color: #e25c66;
       }
     }
     .asb-icon-btn {
+      position:absolute;
+      top:7px;
+      right:0;
       padding: 10px;
+      height:45px;
       span {
         font-size: 25px;
       }
