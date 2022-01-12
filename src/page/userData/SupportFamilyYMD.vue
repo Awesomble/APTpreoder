@@ -86,6 +86,7 @@ const mobiOpt2: any = {
   min: new Date(1980, 0, 1),
 }
 onMounted(() => {
+  store.dispatch('setHeadTitle', '가족구성 정보')
   mobiscroll.date('#parents1', {
     ...mobiOpt1,
     defaultValue: surportFamilyYMD.value.parent1 || date1960,
@@ -164,7 +165,6 @@ onMounted(() => {
   <div class="user-data">
     <dl>
       <dt>
-        <h3>가족구성 정보</h3>
       </dt>
       <dd>
         <label for="parents1" v-if="iptFamily[0] === '0' || iptFamily[0] === '2'">

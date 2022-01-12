@@ -7,7 +7,8 @@ import {
 } from '@/shared/utils'
 import { SurportFamilyYMD } from '@/store/state'
 
-const noticeDt = dayjs('2021.12.29')
+const noticeDtSt = dayjs('2021-12-29').toISOString()
+const noticeDt = dayjs(noticeDtSt)
 const store = useStore()
 const surportFamilyYMD = computed(() : SurportFamilyYMD => store.state.surportFamilyYMD)
 const surportFamily = computed(() : number[] => store.state.surportFamily.split(' ').map((n: string | number) => +n))
@@ -45,7 +46,7 @@ const unAdultCnt : number = UnAdultCnt(surportFamilyYMD.value, noticeDt)
 const infantCnt : number = InfantCnt(surportFamilyYMD.value, noticeDt)
 const transferDays : number = TransferDays(surportAreaYMD.value, noticeDt)
 const weddingDays : number = WeddingDays(surportAreaYMD.value, noticeDt)
-const youngestDays : number = YoungestDays(familyChildrenYMD.value, noticeDt)
+const youngestDays : number = YoungestDays(familyChildrenYMD.value, noticeDtSt)
 
 // ❤️신혼.한부모
 // +가구소득

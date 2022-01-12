@@ -1,4 +1,5 @@
 export const SET_NAVI = 'set_navi'
+export const SET_HEAD_TITLE = 'set_head_title'
 export const SET_SURPORT_TYPE = 'set_surport_type'
 export const SET_SURPORT_WEDDING_YMD = 'set_surport_wedding_ymd'
 export const SET_SURPORT_FAMILY_YMD = 'set_surport_family_ymd'

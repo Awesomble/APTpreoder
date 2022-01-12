@@ -3,14 +3,13 @@ import { State } from './state'
 
 export default {
   FamilyCnt(state: State) : number {
-    let cnt = 1
+    let cnt = 0
     const f = state.surportFamily.split(' ')
     if (f[0] === '0') cnt += 2
     else if (f[0] === '1' || f[0] === '2') cnt += 1
+    else cnt += 0
     if (f[1] === '0') cnt += 2 // 기혼
-    else if (f[1] === '1') cnt += 1 // 한부모
-    else if (f[1] === '2') cnt += 2 // 예비부부
-    else if (f[1] === '3') cnt += 1 // 미혼
+    else if (f[1] === '1' || f[1] === '2') cnt += 1 // 한부모, 미혼
     if (f[2] === '1') cnt += 1 // 자녀1
     else if (f[2] === '2') cnt += 2 // 자녀2
     else if (f[2] === '3') cnt += 3 // 자녀3

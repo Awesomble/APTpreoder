@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
+import { useStore } from 'vuex'
 import AptWangsookB1 from '@/components/list/AptWangsookB1.vue'
 import AptWangsookB17 from '@/components/list/AptWangsookB17.vue'
 import AptWangsookA1 from '@/components/list/AptWangsookA1.vue'
@@ -86,6 +87,11 @@ const list = reactive<{ [key: string]: any }>([
     ineligible: {},
   },
 ])
+
+const store = useStore()
+onMounted(() => {
+  store.dispatch('setHeadTitle', '')
+})
 </script>
 
 <template>
@@ -96,6 +102,7 @@ const list = reactive<{ [key: string]: any }>([
       <li v-for="(item, idx) in list" :key="`item${idx}`" >
         <apt-type01 :data="item" />
       </li>
+      <apt-wangsook-b1 />
       <apt-wangsook-b17 />
       <apt-wangsook-a1 />
       <apt-wangsook-a2 />

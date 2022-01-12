@@ -20,6 +20,7 @@ const mobiOpt: any = {
 }
 
 onMounted(() => {
+  store.dispatch('setHeadTitle', '월소득')
   mobiscroll.numpad('#ipt1', {
     ...mobiOpt,
     onSet(event: { valueText?: string }) {
@@ -48,7 +49,6 @@ onMounted(() => {
   <div class="user-data">
     <dl>
       <dt>
-        <h3>월 소득</h3>
       </dt>
       <dd>
         <label for="ipt1">

@@ -10,7 +10,8 @@ import {
 } from '@/shared/utils'
 import { SurportFamilyYMD } from '@/store/state'
 
-const noticeDt = dayjs('2021.12.29')
+const noticeDtSt = dayjs('2021-12-29').toISOString()
+const noticeDt = dayjs(noticeDtSt)
 const store = useStore()
 const props = defineProps({
   data: {
@@ -19,6 +20,11 @@ const props = defineProps({
   },
 })
 const D = reactive<{ [key: string]: any }>(props.data)
+const score = reactive<{ [key: string]: any }>({
+  honeymoon: {
+    score: [],
+  },
+})
 
 const surportFamilyYMD = computed(() : SurportFamilyYMD => store.state.surportFamilyYMD)
 const surportFamily = computed(() : number[] => store.state.surportFamily.split(' ').map((n: string | number) => +n))
@@ -56,13 +62,15 @@ const unAdultCnt : number = UnAdultCnt(surportFamilyYMD.value, noticeDt)
 const infantCnt : number = InfantCnt(surportFamilyYMD.value, noticeDt)
 const transferDays : number = TransferDays(surportAreaYMD.value, noticeDt)
 const weddingDays : number = WeddingDays(surportAreaYMD.value, noticeDt)
-const youngestDays : number = YoungestDays(familyChildrenYMD.value, noticeDt)
+const youngestDays : number = YoungestDays(familyChildrenYMD.value, noticeDtSt)
 
 // ❤️신혼.한부모
 // +가구소득
 if (!isNull(D.rule.honeymoon.score.income)) {
   if (!isNull(D.rule.honeymoon.score.income.dualIncome)) {
-    if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= D.rule.honeymoon.score.income.dualIncome.max) score1.value += D.rule.honeymoon.score.income.dualIncome.score
+    if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= D.rule.honeymoon.score.income.dualIncome.max) {
+      score1.value += D.rule.honeymoon.score.income.dualIncome.score
+    }
   }
   if (!isNull(D.rule.honeymoon.score.income.singleIncome)) {
     if ((!surportIncomeMy.value || !surportIncomeSpouse.value) && myAverage.value <= D.rule.honeymoon.score.income.singleIncome.max) score1.value += D.rule.honeymoon.score.income.singleIncome.score

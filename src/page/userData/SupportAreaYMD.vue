@@ -8,6 +8,7 @@ const store = useStore()
 const surportAreaYMD = computed(() : string => store.state.surportAreaYMD)
 
 onMounted(() => {
+  store.dispatch('setHeadTitle', '주거지역 전입일')
   mobiscroll.date('#supportAreaYMD', {
     display: 'inline',
     dateFormat: 'yyyy-mm-dd',
@@ -24,7 +25,6 @@ onMounted(() => {
   <div class="user-data">
     <dl>
       <dt>
-        <h3>신청자 주거지역 전입일</h3>
       </dt>
       <dd>
         <input type="text" id="supportAreaYMD" v-show="false">

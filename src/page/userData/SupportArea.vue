@@ -7,6 +7,7 @@ const store = useStore()
 const surportArea = computed(() : number[] => store.state.surportArea.split(' ').map((n: string | number) => +n))
 
 onMounted(() => {
+  store.dispatch('setHeadTitle', '주거지역')
   mobiscroll.treelist('#applicantArea', {
     display: 'inline',
     layout: 'liquid',
@@ -24,7 +25,6 @@ onMounted(() => {
   <div class="user-data">
     <dl>
       <dt>
-        <h3>신청자 주거지역</h3>
       </dt>
       <dd>
         <ul id="applicantArea" class="mbsc-cloak">

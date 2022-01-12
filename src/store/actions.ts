@@ -1,6 +1,7 @@
 import { ActionContext } from 'vuex'
 import { State, SurportFamilyYMD } from './state'
 import {
+  SET_HEAD_TITLE,
   SET_SURPORT_TYPE,
   SET_SURPORT_FAMILY_YMD,
   SET_SURPORT_FAMILY,
@@ -11,8 +12,10 @@ import {
 
 export default {
   setNavi({ commit }: ActionContext<State, State>, payload: boolean) {
-    console.log(payload)
     commit(SET_NAVI, payload)
+  },
+  setHeadTitle({ commit }: ActionContext<State, State>, payload: string) {
+    commit(SET_HEAD_TITLE, payload)
   },
   setSurportType({ commit }: ActionContext<State, State>, payload: string) {
     commit(SET_SURPORT_TYPE, payload)

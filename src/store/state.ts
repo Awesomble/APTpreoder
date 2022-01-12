@@ -32,6 +32,7 @@ export interface SurportFamilyYMD {
 
 export interface State {
   navi: boolean;
+  headerTitle: string;
   average: any;
   surportIncomeSpouse: number,
   surportType: string;
@@ -48,6 +49,7 @@ export interface State {
 export function state() {
   return {
     navi: false,
+    headerTitle: '',
     surportType: localStorage.surportType || '0',
     surportFamily: localStorage.surportFamily || '0 0 0',
     surportFamilyYMD: {

@@ -5,6 +5,7 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 const navi = computed(() : boolean => store.state.navi)
+const headerTitle = computed(() : string => store.state.headerTitle)
 
 const setNavigation = (b: boolean) => {
   store.dispatch('setNavi', b)
@@ -13,8 +14,11 @@ const setNavigation = (b: boolean) => {
 
 <template>
   <header>
-    <h1 class="logo">
-      <router-link :to="{ name: 'Home' }"><span>어썸블</span> 청약가점 계산기</router-link>
+    <h1 class="logo" v-if="!headerTitle.length">
+      <span>어썸블</span> 청약가점 계산기
+    </h1>
+    <h1 class="logo" v-else>
+      {{ headerTitle }}
     </h1>
     <button class="asb-icon-btn" @click="setNavigation(!navi)">
       <span class="material-icons-outlined">

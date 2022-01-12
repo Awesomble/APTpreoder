@@ -1,8 +1,12 @@
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
 import dayjs from 'dayjs'
 import minMax from 'dayjs/plugin/minMax'
 import { SurportFamilyYMD } from '@/store/state'
 
 dayjs.extend(minMax)
+dayjs.extend(customParseFormat)
+dayjs.extend(advancedFormat)
 
 export default {}
 // 미성년수
@@ -30,8 +34,11 @@ export function InfantCnt(surportFamilyYMD: SurportFamilyYMD, noticeDt: dayjs.Co
 }
 // 전입기간
 export function TransferDays(surportAreaYMD: string, noticeDt: dayjs.ConfigType) : number {
+
+  console.log('전입후경과시간 111: ', surportAreaYMD, noticeDt)
+  console.log('전입후경과시간 222: ', dayjs(noticeDt))
   const cnt : number = dayjs(noticeDt).diff(surportAreaYMD, 'day')
-  console.log('잔입후경과시간 : ', cnt)
+  console.log('전입후경과시간 : ', cnt)
   return cnt
 }
 // 결혼기간
@@ -42,11 +49,12 @@ export function WeddingDays(surportWeddingYMD: string, noticeDt: dayjs.ConfigTyp
   return cnt
 }
 // 최연소
-export function YoungestDays(ymb: dayjs.ConfigType[], noticeDt: dayjs.ConfigType) : number {
+export function YoungestDays(ymb: dayjs.ConfigType[], noticeDt: string) : number {
   if (!ymb || !ymb.length) return 0
   // @ts-ignore
   const y : dayjs.ConfigType = dayjs.max(ymb)
   const cnt : number = dayjs(noticeDt).diff(y, 'day')
+  console.log('최연소자Day : ', noticeDt)
   console.log('최연소자Day : ', cnt)
   return cnt
 }

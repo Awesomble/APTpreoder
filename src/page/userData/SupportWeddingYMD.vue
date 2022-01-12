@@ -8,6 +8,7 @@ const store = useStore()
 const surportWeddingYMD = computed(() : string => store.state.surportWeddingYMD)
 
 onMounted(() => {
+  store.dispatch('setHeadTitle', '혼인 신고일')
   mobiscroll.date('#supportWeddingYMD', {
     display: 'inline',
     dateFormat: 'yyyy-mm-dd',
@@ -27,7 +28,6 @@ onMounted(() => {
   <div class="user-data">
     <dl>
       <dt>
-        <h3>신청자 혼인 신고일</h3>
       </dt>
       <dd>
         <input type="text" id="supportWeddingYMD" v-show="false">

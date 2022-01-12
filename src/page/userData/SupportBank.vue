@@ -22,6 +22,7 @@ for (let i = 0; i <= 100000000; i += 100000) {
 }
 
 onMounted(() => {
+  store.dispatch('setHeadTitle', '청약통장')
   mobiscroll.scroller('#applicantBank', {
     display: 'inline',
     showLabel: true,
@@ -50,7 +51,6 @@ onMounted(() => {
   <div class="user-data">
     <dl>
       <dt>
-        <h3>청약통장</h3>
       </dt>
       <dd>
         <input type="text" id="applicantBank" v-show="false">

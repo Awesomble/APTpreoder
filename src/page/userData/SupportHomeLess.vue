@@ -20,6 +20,7 @@ for (let i = 0; i <= 50; i += 1) {
 }
 
 onMounted(() => {
+  store.dispatch('setHeadTitle', '무주택 기간')
   mobiscroll.treelist('#applicantArea', {
     display: 'inline',
     showInput: false,
@@ -39,7 +40,6 @@ onMounted(() => {
   <div class="user-data">
     <dl>
       <dt>
-        <h3>무주택 기간</h3>
       </dt>
       <dd>
         <ul id="applicantArea" class="mbsc-cloak">

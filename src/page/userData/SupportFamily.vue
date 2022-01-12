@@ -18,6 +18,7 @@ const userFamilyYMD : SurportFamilyYMD = {
   children5: '',
 }
 onMounted(() => {
+  store.dispatch('setHeadTitle', '신청자 가족구성')
   mobiscroll.treelist('#applicantArea', {
     display: 'inline',
     layout: 'liquid',
@@ -38,7 +39,6 @@ onMounted(() => {
   <div class="user-data">
     <dl>
     <dt>
-      <h3>신청자 가족구성</h3>
     </dt>
     <dd>
       <ul id="applicantArea" class="mbsc-cloak">

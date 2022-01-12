@@ -9,13 +9,15 @@ import {
   SET_SURPORT_HOMELESS_YMD,
   SET_SURPORT_BANK,
   SET_SURPORT_WEDDING_YMD,
-  SET_NAVI,
+  SET_NAVI, SET_HEAD_TITLE,
 } from './types'
 
 export default {
   [SET_NAVI](state: State, payload: boolean) {
-    console.log(payload)
     state.navi = payload
+  },
+  [SET_HEAD_TITLE](state: State, payload: string) {
+    state.headerTitle = payload
   },
   [SET_SURPORT_TYPE](state: State, payload: string) {
     localStorage.surportType = payload
