@@ -109,7 +109,7 @@ if (surportArea.value[0] === 1 && surportArea.value[1] === 14) {
       </colgroup>
       <tbody>
       <tr class="type">
-        <td class="thubm" style="background-color: #F8C25C;font-size: 1.5em">
+        <td class="thubm" style="background-color: #F8C25C;font-size: 20px">
           A1,3,A6
         </td>
         <td colspan="2" class="tit">경기도 안산 신길(신희타)</td>
