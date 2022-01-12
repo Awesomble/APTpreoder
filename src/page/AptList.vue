@@ -49,12 +49,14 @@ const list = reactive<{ [key: string]: any }>([
             dualIncome: {
               min: null,
               max: 100,
-              score: 3,
+              score: 1,
+              desc: '월소득 100%이하',
             },
             singleIncome: {
               min: null,
               max: 80,
               score: 1,
+              desc: '월소득 80%이하',
             },
           },
           unAdultCnt: [],
@@ -99,9 +101,9 @@ onMounted(() => {
   </div>
   <div class="aptListWrap">
     <ul class="aptList">
-      <li v-for="(item, idx) in list" :key="`item${idx}`" >
-        <apt-type01 :data="item" />
-      </li>
+<!--      <li v-for="(item, idx) in list" :key="`item${idx}`" >-->
+<!--        <apt-type01 :data="item" />-->
+<!--      </li>-->
       <apt-wangsook-b1 />
       <apt-wangsook-b17 />
       <apt-wangsook-a1 />

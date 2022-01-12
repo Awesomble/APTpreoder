@@ -70,13 +70,19 @@ if (!isNull(D.rule.honeymoon.score.income)) {
   if (!isNull(D.rule.honeymoon.score.income.dualIncome)) {
     if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= D.rule.honeymoon.score.income.dualIncome.max) {
       score1.value += D.rule.honeymoon.score.income.dualIncome.score
+      score.honeymoon.score.push({ text: D.rule.honeymoon.score.income.dualIncome.desc, score: D.rule.honeymoon.score.income.dualIncome.score })
     }
   }
   if (!isNull(D.rule.honeymoon.score.income.singleIncome)) {
-    if ((!surportIncomeMy.value || !surportIncomeSpouse.value) && myAverage.value <= D.rule.honeymoon.score.income.singleIncome.max) score1.value += D.rule.honeymoon.score.income.singleIncome.score
+    if ((!surportIncomeMy.value || !surportIncomeSpouse.value) && myAverage.value <= D.rule.honeymoon.score.income.singleIncome.max) {
+      score1.value += D.rule.honeymoon.score.income.singleIncome.score
+      score.honeymoon.score.push({ text: D.rule.honeymoon.score.income.singleIncome.desc, score: D.rule.honeymoon.score.income.singleIncome.score })
+    }
   }
 }
 // +미성년자녀수
+if (!isNull(D.rule.honeymoon.score.unAdultCnt)) {
+}
 if (unAdultCnt >= 3) score1.value += 3
 else if (unAdultCnt === 2) score1.value += 2
 else if (unAdultCnt === 1) score1.value += 1
@@ -184,6 +190,22 @@ if (isNull(D.areaPriority.area[1]) || D.areaPriority.area[0] === surportArea.val
           {{ D.aptInfo.type }}
         </td>
         <td colspan="2" class="tit">{{ D.aptInfo.title }}</td>
+      </tr>
+      <tr class="score" v-if="D.disType.row.honeymoon || D.disType.row.singleParent">
+        <td>{{ `${D.disType.row.honeymoon ? '신혼' : ''}${D.disType.row.honeymoon && D.disType.row.singleParent ? '·' : ''}${D.disType.row.honeymoon ? '한부모' : ''}`}}</td>
+        <td>
+          <span v-if="!score.honeymoon.score.length" class="error">부적격</span>
+          <em v-else class="score"
+              v-for="(s, idx) in score.honeymoon.score"
+              :key="`honeymoon.score${idx}`"
+          >{{ s.text }} : {{ s.score }}</em>
+        </td>
+        <td class="opt">
+          <span class="ranking1" v-if="score1Ranking1">1순위</span>
+          <span class="ranking2" v-if="score1Ranking2">2순위</span>
+          <span class="area" v-if="score1Area">당해</span>
+          <span class="first" v-if="score1First">우선공급</span>
+        </td>
       </tr>
       <tr class="score" v-if="D.disType.row.honeymoon || D.disType.row.singleParent">
         <td>{{ `${D.disType.row.honeymoon ? '신혼' : ''}${D.disType.row.honeymoon && D.disType.row.singleParent ? '·' : ''}${D.disType.row.honeymoon ? '한부모' : ''}`}}</td>

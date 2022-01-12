@@ -237,7 +237,7 @@ dl {
     label {
       display: flex;
       justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
     input {
       width: 140px;

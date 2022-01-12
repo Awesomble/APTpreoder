@@ -53,11 +53,11 @@ onMounted(() => {
       <dd>
         <label for="ipt1">
           신청자 :
-          <input id="ipt1" type="tel" :value="surportIncomeMy">
+          <input id="ipt1" type="tel" :value="Number(surportIncomeMy).toLocaleString()">
         </label>
         <label for="ipt2" v-show="iptFamily[1] === '0'">
           맞벌이 :
-          <input id="ipt2" type="tel" :value="surportIncomeSpouse">
+          <input id="ipt2" type="tel" :value="Number(surportIncomeSpouse).toLocaleString()">
         </label>
         <div class="ps">
           <ul>
@@ -86,7 +86,7 @@ onMounted(() => {
      label {
        display: flex;
        justify-content: center;
-       margin-bottom: 10px;
+       margin-bottom: 20px;
        &:after {
          content: '원';
          padding-left: 5px;
