@@ -69,41 +69,46 @@ const youngestDays : number = YoungestDays(familyChildrenYMD.value, noticeDtSt)
 if (!isNull(D.rule.honeymoon.score.income)) {
   if (!isNull(D.rule.honeymoon.score.income.dualIncome)) {
     if (surportIncomeMy.value && surportIncomeSpouse.value && myAverage.value <= D.rule.honeymoon.score.income.dualIncome.max) {
-      score1.value += D.rule.honeymoon.score.income.dualIncome.score
       score.honeymoon.score.push({ text: D.rule.honeymoon.score.income.dualIncome.desc, score: D.rule.honeymoon.score.income.dualIncome.score })
     }
   }
   if (!isNull(D.rule.honeymoon.score.income.singleIncome)) {
     if ((!surportIncomeMy.value || !surportIncomeSpouse.value) && myAverage.value <= D.rule.honeymoon.score.income.singleIncome.max) {
-      score1.value += D.rule.honeymoon.score.income.singleIncome.score
       score.honeymoon.score.push({ text: D.rule.honeymoon.score.income.singleIncome.desc, score: D.rule.honeymoon.score.income.singleIncome.score })
     }
   }
 }
 // +미성년자녀수
-if (!isNull(D.rule.honeymoon.score.unAdultCnt)) {
+if (D.rule.honeymoon.score.unAdultCnt.length) {
+  D.rule.honeymoon.score.unAdultCnt.forEach((n: { val: number, score: number, desc: string }) => {
+    if (unAdultCnt === n.val) score.honeymoon.score.push({ text: n.desc, score: n.score })
+  })
 }
-if (unAdultCnt >= 3) score1.value += 3
-else if (unAdultCnt === 2) score1.value += 2
-else if (unAdultCnt === 1) score1.value += 1
 // +해당시도거주기간
-if (transferDays >= 1095) score1.value += 3
-else if (transferDays >= 365) score1.value += 2
-else score1.value += 1
-// +입주자저축 기입기간
-if (surportBank.value[0] >= 24) score1.value += 3
-else if (surportBank.value[0] >= 12) score1.value += 2
-else if (surportBank.value[0] >= 6) score1.value += 1
-// +혼인기간.한부모
-if (surportFamily.value[1] === 0) {
-  if (weddingDays <= 1095) score1.value += 3
-  else if (weddingDays <= 1825) score1.value += 2
-  else if (weddingDays <= 2555) score1.value += 1
-} else if (surportFamily.value[1] === 1) {
-  if (youngestDays <= 730) score1.value += 3
-  else if (youngestDays <= 1460) score1.value += 2
-  else if (youngestDays <= 2190) score1.value += 1
+if (D.rule.honeymoon.score.transferDays.length) {
+  if (D.rule.honeymoon.score.transferDays[0].min <= transferDays) score.honeymoon.score.push({ text: D.rule.honeymoon.score.transferDays[0].desc, score: D.rule.honeymoon.score.transferDays[0].score })
+  else if (D.rule.honeymoon.score.transferDays[1].min <= transferDays) score.honeymoon.score.push({ text: D.rule.honeymoon.score.transferDays[1].desc, score: D.rule.honeymoon.score.transferDays[1].score })
+  else score.honeymoon.score.push({ text: D.rule.honeymoon.score.transferDays[2].desc, score: D.rule.honeymoon.score.transferDays[2].score })
 }
+// +입주자저축 납입횟수
+if (D.rule.honeymoon.score.paymentCnt.length) {
+  if (D.rule.honeymoon.score.paymentCnt[0].min <= surportBank.value[0]) score.honeymoon.score.push({ text: D.rule.honeymoon.score.paymentCnt[0].desc, score: D.rule.honeymoon.score.paymentCnt[0].score })
+  else if (D.rule.honeymoon.score.paymentCnt[1].min <= surportBank.value[0]) score.honeymoon.score.push({ text: D.rule.honeymoon.score.paymentCnt[1].desc, score: D.rule.honeymoon.score.paymentCnt[1].score })
+  else if (D.rule.honeymoon.score.paymentCnt[2].min <= surportBank.value[0]) score.honeymoon.score.push({ text: D.rule.honeymoon.score.paymentCnt[2].desc, score: D.rule.honeymoon.score.paymentCnt[2].score })
+}
+// +혼인기간.한부모
+if (!isNull(D.rule.honeymoon.score.marriagePeriod) && surportFamily.value[1] === 0) {
+  if (D.rule.honeymoon.score.marriagePeriod[0].min >= weddingDays) score.honeymoon.score.push({ text: D.rule.honeymoon.score.marriagePeriod[0].desc, score: D.rule.honeymoon.score.marriagePeriod[0].score })
+  else if (D.rule.honeymoon.score.marriagePeriod[1].min >= weddingDays) score.honeymoon.score.push({ text: D.rule.honeymoon.score.marriagePeriod[1].desc, score: D.rule.honeymoon.score.marriagePeriod[1].score })
+  else if (D.rule.honeymoon.score.marriagePeriod[2].min >= weddingDays) score.honeymoon.score.push({ text: D.rule.honeymoon.score.marriagePeriod[2].desc, score: D.rule.honeymoon.score.marriagePeriod[2].score })
+}
+if (!isNull(D.rule.honeymoon.score.singleParent) && surportFamily.value[1] === 1) {
+  if (D.rule.honeymoon.score.singleParent[0].min >= youngestDays) score.honeymoon.score.push({ text: D.rule.honeymoon.score.singleParent[0].desc, score: D.rule.honeymoon.score.singleParent[0].score })
+  else if (D.rule.honeymoon.score.singleParent[1].min >= youngestDays) score.honeymoon.score.push({ text: D.rule.honeymoon.score.singleParent[1].desc, score: D.rule.honeymoon.score.singleParent[1].score })
+  else if (D.rule.honeymoon.score.singleParent[2].min >= youngestDays) score.honeymoon.score.push({ text: D.rule.honeymoon.score.singleParent[2].desc, score: D.rule.honeymoon.score.singleParent[2].score })
+}
+
+// if (string) run
 // 1순위
 if (weddingDays <= 2555 && familyChildrenCnt.value > 0) score1Ranking1.value = true
 else if (surportFamily.value[1] === 1
@@ -195,10 +200,11 @@ if (isNull(D.areaPriority.area[1]) || D.areaPriority.area[0] === surportArea.val
         <td>{{ `${D.disType.row.honeymoon ? '신혼' : ''}${D.disType.row.honeymoon && D.disType.row.singleParent ? '·' : ''}${D.disType.row.honeymoon ? '한부모' : ''}`}}</td>
         <td>
           <span v-if="!score.honeymoon.score.length" class="error">부적격</span>
-          <em v-else class="score"
+          <p v-else class="score"
               v-for="(s, idx) in score.honeymoon.score"
               :key="`honeymoon.score${idx}`"
-          >{{ s.text }} : {{ s.score }}</em>
+          >{{ s.text }} : {{ s.score }}</p>
+          <p>{{ score.honeymoon.score.reduce((acc: any, item: any) => acc + item.score, 0)}}</p>
         </td>
         <td class="opt">
           <span class="ranking1" v-if="score1Ranking1">1순위</span>
